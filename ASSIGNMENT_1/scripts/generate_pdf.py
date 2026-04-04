@@ -5,10 +5,11 @@ Open the HTML in a browser and press Ctrl+P to Save as PDF.
 import base64
 import os
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+OUTPUT_DIR = os.path.join(os.path.dirname(SCRIPT_DIR), 'outputs')
 
 def encode_image(filename):
-    with open(os.path.join(BASE_DIR, filename), 'rb') as f:
+    with open(os.path.join(OUTPUT_DIR, filename), 'rb') as f:
         return base64.b64encode(f.read()).decode('utf-8')
 
 scatter_b64 = encode_image('scatter_bmi_vs_charges.png')
@@ -16,7 +17,7 @@ histogram_b64 = encode_image('histogram_charges.png')
 heatmap_b64 = encode_image('correlation_heatmap.png')
 
 # Read the HTML template
-template_path = os.path.join(BASE_DIR, 'template.html')
+template_path = os.path.join(SCRIPT_DIR, 'template.html')
 with open(template_path, 'r', encoding='utf-8') as f:
     html = f.read()
 
@@ -25,7 +26,7 @@ html = html.replace('SCATTER_PLACEHOLDER', scatter_b64)
 html = html.replace('HISTOGRAM_PLACEHOLDER', histogram_b64)
 html = html.replace('HEATMAP_PLACEHOLDER', heatmap_b64)
 
-output_path = os.path.join(BASE_DIR, 'assignment_report.html')
+output_path = os.path.join(OUTPUT_DIR, 'assignment_report.html')
 with open(output_path, 'w', encoding='utf-8') as f:
     f.write(html)
 

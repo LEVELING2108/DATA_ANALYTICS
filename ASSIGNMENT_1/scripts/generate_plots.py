@@ -10,7 +10,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+OUTPUT_DIR = os.path.join(os.path.dirname(SCRIPT_DIR), 'outputs')
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Load and clean data from Google Drive
 url = "https://drive.google.com/uc?export=download&id=1oyN6CXzbJq42dL5Jqkn1cP83Hu93CD6q"
