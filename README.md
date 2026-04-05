@@ -36,10 +36,32 @@ ASSIGNMENT_N/
 
 ---
 
-### Assignment 2 — Descriptive Statistics & Probability Distributions
-*(Notebook and scripts in `ASSIGNMENT_2/`)*
+### Assignment 2 — Data Objects, Attribute Types & Statistical Descriptions
+**Dataset:** HR employee records (14,995 records)
+**Tools:** Python, Pandas, NumPy, Matplotlib, Seaborn, SciPy (no Tableau/Power BI)
 
-Covers measures of central tendency, dispersion, probability distributions (normal, binomial, Poisson), and confidence intervals.
+| Part | Task | Key Deliverables |
+|------|------|-----------------|
+| **A** | Data Object Classification | Classification of all 10 attributes (quantitative, categorical, binary, dependency analysis) |
+| **B** | Central Tendency & Dispersion | Mean, median, mode, range, variance, SD, IQR, CV for 5 numeric columns |
+| **C** | Univariate & Multivariate Analysis | Histogram, box plot, Q-Q plot, pairplot, correlation analysis (r = 0.349) |
+| **D** | Analytics Dashboard | 4-chart dashboard: attrition by dept, satisfaction by salary, evaluation vs hours, box plots |
+
+**Key Finding:** High-performing but dissatisfied employees who work excessive hours (250+/month) are the most likely to leave — indicating burnout-driven attrition.
+
+**Outputs:**
+- **Tables:** `partA_classification.csv`, `partB_statistical_summary.csv`
+- **Combined Plots:** `partC1_univariate_satisfaction.png`, `partC2_pairplot.png`, `partC3_correlation_scatter.png`, `partD_dashboard.png`
+- **Individual Plots:** `C1a_histogram_satisfaction.png`, `C1b_boxplot_satisfaction.png`, `C1c_qqplot_satisfaction.png`, `D1_barchart_attrition_by_dept.png`, `D2_histogram_satisfaction_by_salary.png`, `D3_scatter_evaluation_vs_hours.png`, `D4_boxplot_satisfaction_by_dept.png`
+- **Reports:** `assignment2_report.html`, `assignment2_report.md`
+
+**How to Run:**
+```bash
+cd ASSIGNMENT_2/notebooks
+python assignment2_analysis.py          # Run full analysis
+python generate_individual_plots.py     # Generate individual plot images
+python generate_report.py               # Generate Markdown + HTML reports
+```
 
 ---
 
@@ -97,21 +119,31 @@ Covers classification algorithms (Logistic Regression, Decision Trees, KNN), tra
    pip install pandas numpy matplotlib seaborn scipy scikit-learn jupyter
    ```
 
-3. **Open a notebook:**
+3. **Open a notebook or run a script:**
    ```bash
+   # Assignment 1
    jupyter notebook ASSIGNMENT_1/notebooks/insurance_assignment.ipynb
+
+   # Assignment 2
+   cd ASSIGNMENT_2/notebooks
+   python assignment2_analysis.py
    ```
 
 4. **Run all cells** to reproduce analysis, visualizations, and outputs.
 
 ---
 
-## Dataset Source
+## Dataset Sources
 
-The primary dataset (insurance.csv) is loaded from Google Drive:
+### Assignment 1 — Insurance
 - **Download URL:** `https://drive.google.com/uc?export=download&id=1oyN6CXzbJq42dL5Jqkn1cP83Hu93CD6q`
 - **Records:** 1,338
 - **Attributes:** age, sex, bmi, children, smoker, region, charges
+
+### Assignment 2 — HR Employee Records
+- **File:** `ASSIGNMENT_2/data/HR_comma_sep.csv`
+- **Records:** 14,995
+- **Attributes:** satisfaction_level, last_evaluation, number_project, average_montly_hours, time_spend_company, Work_accident, left, promotion_last_5years, Department, salary
 
 ---
 
