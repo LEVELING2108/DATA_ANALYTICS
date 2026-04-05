@@ -1,0 +1,11 @@
+Data Type Category,Columns,Justification
+Quantitative Multidimensional (Continuous Numeric),"satisfaction_level, last_evaluation, average_montly_hours","These are continuous numeric measurements on a scale. satisfaction_level (0-1), last_evaluation (0-1), average_montly_hours (numeric) represent measurable quantities with meaningful arithmetic operations."
+Quantitative Multidimensional (Discrete Numeric),"number_project, time_spend_company","These are discrete numeric values (counts/years). number_project is a count of projects, time_spend_company is years spent. They support arithmetic but have discrete values."
+Categorical (Nominal),Department,"Department has named categories (sales, accounting, hr, technical, support, management, IT, product_mng, marketing, RandD) with no inherent ordering."
+Categorical (Ordinal),salary,"Salary has categories (low, medium, high) with a natural ordering from low to high, making it an ordinal categorical attribute."
+Binary (Dichotomous),"left, Work_accident, promotion_last_5years","These are binary attributes encoded as 0/1. 'left' indicates attrition (1=left, 0=stayed), 'Work_accident' indicates if employee had a work accident, 'promotion_last_5years' indicates if promoted in last 5 years."
+Non-dependency-oriented vs Dependency-oriented,All columns (employee records),"The dataset is primarily NON-DEPENDENCY-ORIENTED: each row is an independent employee snapshot with no explicit temporal sequence or network relationships between records. However, POTENTIAL dependencies exist:
+  - TEMPORAL: 'time_spend_company' and 'promotion_last_5years' imply time-based history.
+  - NETWORK: Employees in the same department may influence each other's satisfaction/attrition.
+  - CAUSAL: 'Work_accident' could influence 'satisfaction_level' and 'left'.
+Despite these, the dataset treats each record as an independent cross-sectional observation."

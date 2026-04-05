@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2 — HR Dataset Analysis Report</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --success: #27ae60;
+            --warning: #e67e22;
+            --danger: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        header {
+            text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--accent);
+            margin-bottom: 40px;
+        }
+        header h1 {
+            font-size: 2.2em;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        header .meta {
+            color: var(--gray);
+            font-size: 0.95em;
+        }
+        .executive-summary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .executive-summary h2 {
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+        .executive-summary p {
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+        h2 {
+            color: var(--primary);
+            font-size: 1.8em;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+        }
+        h3 {
+            color: var(--accent);
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+        }
+        h4 {
+            color: var(--dark);
+            font-size: 1.1em;
+            margin: 20px 0 10px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.92em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        thead {
+            background: var(--primary);
+            color: white;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        tbody tr:hover {
+            background: #e8f4f8;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid var(--warning);
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .insight {
+            background: #d4edda;
+            padding: 15px;
+            border-left: 4px solid var(--success);
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .warning {
+            background: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid var(--danger);
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .chart-ref {
+            background: #e8f4f8;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: var(--accent);
+            margin: 15px 0;
+        }
+        .chart-ref::before {
+            content: "📊 ";
+        }
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .toc {
+            background: var(--light);
+            padding: 20px 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .toc h3 {
+            margin-top: 0;
+        }
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        .toc li {
+            padding: 5px 0;
+        }
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        .recommendations {
+            background: #e8f8f5;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .recommendations table {
+            background: white;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid var(--light);
+            color: var(--gray);
+            font-size: 0.9em;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        .badge-high {
+            background: #f8d7da;
+            color: var(--danger);
+        }
+        .badge-moderate {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .badge-low {
+            background: #d4edda;
+            color: #155724;
+        }
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Assignment 2 — Data Objects, Attribute Types & Statistical Descriptions</h1>
+            <div class="meta">
+                <strong>Course:</strong> Data Analytics | <strong>Program:</strong> B.Tech ECE — IIT Madras<br>
+                <strong>Dataset:</strong> HR_comma_sep.csv (14,995 employee records)<br>
+                <strong>Tools:</strong> Python, Pandas, NumPy, Matplotlib, Seaborn, SciPy |
+                <strong>Date:</strong> 05 April 2026
+            </div>
+        </header>
+
+        <div class="executive-summary">
+            <h2>Executive Summary</h2>
+            <p>This report presents a comprehensive statistical analysis of the HR employee dataset containing 14,995 records. The analysis covers data object classification, measures of central tendency and dispersion, univariate and multivariate analysis, and a full analytics dashboard — all implemented in Python without reliance on Tableau or Power BI.</p>
+            <p style="margin-top: 10px;"><strong>Key Finding:</strong> Employees who leave the company exhibit a distinct pattern — <strong>low satisfaction (mean ≈ 0.44)</strong> combined with <strong>high evaluation scores (mean ≈ 0.78)</strong> and <strong>excessive monthly hours (mean ≈ 257)</strong>, suggesting burnout among high performers is the primary attrition driver.</p>
+        </div>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ul>
+                <li><a href="#part-a">Part A — Data Object Classification</a></li>
+                <li><a href="#part-b">Part B — Central Tendency & Dispersion</a></li>
+                <li><a href="#part-c">Part C — Univariate & Multivariate Analysis</a></li>
+                <li><a href="#part-d">Part D — Analytics Dashboard</a></li>
+                <li><a href="#insights">Key HR Insights & Recommendations</a></li>
+            </ul>
+        </div>
+
+        <h2 id="part-a">Part A — Data Object Classification [4 Marks]</h2>
+        
+        <h3>A1. Classification Table</h3>
+        <p>The HR dataset contains 14,995 independent employee records with 10 attributes. Each attribute is classified below according to the data type taxonomy from Unit II.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Data Type Category</th>
+                    <th>Columns</th>
+                    <th>Justification</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Quantitative — Continuous</strong></td>
+                    <td><code>satisfaction_level</code>, <code>last_evaluation</code>, <code>average_montly_hours</code></td>
+                    <td>Continuous numeric measurements on a scale with meaningful arithmetic operations.</td>
+                </tr>
+                <tr>
+                    <td><strong>Quantitative — Discrete</strong></td>
+                    <td><code>number_project</code>, <code>time_spend_company</code></td>
+                    <td>Discrete numeric values (counts/years). Support arithmetic but take only integer values.</td>
+                </tr>
+                <tr>
+                    <td><strong>Categorical — Nominal</strong></td>
+                    <td><code>Department</code></td>
+                    <td>Named categories with no inherent ordering: sales, accounting, hr, technical, support, management, IT, product_mng, marketing, RandD.</td>
+                </tr>
+                <tr>
+                    <td><strong>Categorical — Ordinal</strong></td>
+                    <td><code>salary</code></td>
+                    <td>Categories (low, medium, high) with a natural ordering from low → high.</td>
+                </tr>
+                <tr>
+                    <td><strong>Binary (Dichotomous)</strong></td>
+                    <td><code>left</code>, <code>Work_accident</code>, <code>promotion_last_5years</code></td>
+                    <td>Binary attributes encoded as 0/1 indicating presence/absence of a condition.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>A2. Dependency Analysis</h3>
+        <p><strong>Classification:</strong> The dataset is primarily <strong>non-dependency-oriented</strong>.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Dependency Type</th>
+                    <th>Evidence</th>
+                    <th>Impact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Temporal</strong></td>
+                    <td><code>time_spend_company</code> and <code>promotion_last_5years</code> imply historical accumulation</td>
+                    <td>Employees with longer tenure may have different attrition patterns</td>
+                </tr>
+                <tr>
+                    <td><strong>Causal</strong></td>
+                    <td><code>Work_accident</code> → <code>satisfaction_level</code> → <code>left</code></td>
+                    <td>Accidents may reduce satisfaction, increasing attrition risk</td>
+                </tr>
+                <tr>
+                    <td><strong>Network/Group</strong></td>
+                    <td>Employees within the same <code>Department</code> share management, culture, workload</td>
+                    <td>Department-level effects may create correlated responses</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="insight">
+            <strong>Conclusion:</strong> While the dataset is treated as independent observations, real-world HR data likely contains unobserved dependencies that should be considered in advanced modeling.
+        </div>
+
+        <h2 id="part-b">Part B — Central Tendency & Dispersion [6 Marks]</h2>
+
+        <h3>B1. Statistical Summary Table</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Statistic</th>
+                    <th>satisfaction_level</th>
+                    <th>last_evaluation</th>
+                    <th>number_project</th>
+                    <th>average_montly_hours</th>
+                    <th>time_spend_company</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Mean</strong></td>
+                    <td>0.6129</td>
+                    <td>0.7161</td>
+                    <td>3.803</td>
+                    <td>201.0502</td>
+                    <td>3.4982</td>
+                </tr>
+                <tr>
+                    <td><strong>Median</strong></td>
+                    <td>0.64</td>
+                    <td>0.72</td>
+                    <td>4.0</td>
+                    <td>200.0</td>
+                    <td>3.0</td>
+                </tr>
+                <tr>
+                    <td><strong>Mode</strong></td>
+                    <td>0.1</td>
+                    <td>0.55</td>
+                    <td>4</td>
+                    <td>135</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td><strong>Range</strong></td>
+                    <td>0.91</td>
+                    <td>0.64</td>
+                    <td>5</td>
+                    <td>214</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td><strong>Variance</strong></td>
+                    <td>0.0618</td>
+                    <td>0.0293</td>
+                    <td>1.5185</td>
+                    <td>2494.3388</td>
+                    <td>2.1324</td>
+                </tr>
+                <tr>
+                    <td><strong>Std Deviation</strong></td>
+                    <td>0.2486</td>
+                    <td>0.1712</td>
+                    <td>1.2323</td>
+                    <td>49.9434</td>
+                    <td>1.4603</td>
+                </tr>
+                <tr>
+                    <td><strong>IQR</strong></td>
+                    <td>0.38</td>
+                    <td>0.31</td>
+                    <td>2.0</td>
+                    <td>89.0</td>
+                    <td>1.0</td>
+                </tr>
+                <tr>
+                    <td><strong>Min</strong></td>
+                    <td>0.09</td>
+                    <td>0.36</td>
+                    <td>2</td>
+                    <td>96</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td><strong>Max</strong></td>
+                    <td>1.0</td>
+                    <td>1.0</td>
+                    <td>7</td>
+                    <td>310</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td><strong>CV (%)</strong></td>
+                    <td>40.56%</td>
+                    <td>23.9%</td>
+                    <td>32.4%</td>
+                    <td>24.84%</td>
+                    <td>41.74%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>B2. Dispersion Analysis</h3>
+        <p>The <strong>Coefficient of Variation (CV)</strong> measures relative dispersion as a percentage of the mean:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>CV</th>
+                    <th>Dispersion Level</th>
+                    <th>Interpretation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>time_spend_company</code></td>
+                    <td>41.74%</td>
+                    <td><span class="badge badge-moderate">Moderately Dispersed</span></td>
+                    <td>Employee tenure varies significantly — mix of new joiners and long-tenured staff</td>
+                </tr>
+                <tr>
+                    <td><code>satisfaction_level</code></td>
+                    <td>40.56%</td>
+                    <td><span class="badge badge-moderate">Moderately Dispersed</span></td>
+                    <td>Wide spread in satisfaction — bimodal distribution with clusters at very low (~0.1) and high (~0.8)</td>
+                </tr>
+                <tr>
+                    <td><code>number_project</code></td>
+                    <td>32.4%</td>
+                    <td><span class="badge badge-moderate">Moderately Dispersed</span></td>
+                    <td>Employees handle 2–7 projects; moderate workload variation</td>
+                </tr>
+                <tr>
+                    <td><code>average_montly_hours</code></td>
+                    <td>24.84%</td>
+                    <td><span class="badge badge-low">Tightly Clustered</span></td>
+                    <td>Most employees work 150–250 hours/month; relatively consistent workload</td>
+                </tr>
+                <tr>
+                    <td><code>last_evaluation</code></td>
+                    <td>23.9%</td>
+                    <td><span class="badge badge-low">Tightly Clustered</span></td>
+                    <td>Evaluation scores concentrate around 0.7–0.9; most employees rated similarly</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="highlight">
+            <strong>Key Observations:</strong>
+            <ul>
+                <li><strong>Most dispersed:</strong> <code>time_spend_company</code> (CV = 41.74%) — indicates diverse tenure distribution</li>
+                <li><strong>Least dispersed:</strong> <code>last_evaluation</code> (CV = 23.9%) — evaluation scores are tightly grouped</li>
+                <li><strong>Bimodal satisfaction:</strong> The mean (0.6129) is lower than the median (0.64), indicating left-skew</li>
+            </ul>
+        </div>
+
+        <h2 id="part-c">Part C — Univariate & Multivariate Analysis [5 Marks]</h2>
+
+        <h3>C1. Univariate Analysis — <code>satisfaction_level</code></h3>
+        
+        <h4>Distribution Characteristics</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Mean</td><td>0.6129</td></tr>
+                <tr><td>Median</td><td>0.64</td></tr>
+                <tr><td>Std Deviation</td><td>0.2486</td></tr>
+                <tr><td>Skewness</td><td>-0.4766</td></tr>
+                <tr><td>Kurtosis</td><td>-0.6704</td></tr>
+            </tbody>
+        </table>
+
+        <p><strong>Skewness Interpretation:</strong> The negative skew (-0.4766) indicates a <strong>left-skewed distribution</strong> — the tail extends toward lower satisfaction values, meaning more employees cluster at higher satisfaction levels, but a significant minority report very low satisfaction.</p>
+
+        <h4>Outlier Analysis (IQR Method)</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Q1 (25th percentile)</td><td>0.44</td></tr>
+                <tr><td>Q3 (75th percentile)</td><td>0.82</td></tr>
+                <tr><td>IQR</td><td>0.38</td></tr>
+                <tr><td>Lower Bound (Q1 − 1.5×IQR)</td><td>-0.13</td></tr>
+                <tr><td>Upper Bound (Q3 + 1.5×IQR)</td><td>1.39</td></tr>
+                <tr><td>Outliers Detected</td><td><strong>0</strong></td></tr>
+            </tbody>
+        </table>
+
+        <div class="insight">
+            <strong>Finding:</strong> No statistical outliers detected by the IQR method because the bounds (-0.13 to 1.39) encompass the full data range. However, the <strong>bimodal shape</strong> of the histogram reveals two distinct employee groups:
+            <ol>
+                <li><strong>Highly dissatisfied</strong> (satisfaction ≈ 0.09–0.20) — likely candidates for attrition</li>
+                <li><strong>Satisfied</strong> (satisfaction ≈ 0.70–0.95) — likely retained employees</li>
+            </ol>
+        </div>
+
+        <div class="chart-ref"><strong>See:</strong> <code>outputs/partC1_univariate_satisfaction.png</code> (combined) or individual: <code>C1a_histogram_satisfaction.png</code>, <code>C1b_boxplot_satisfaction.png</code>, <code>C1c_qqplot_satisfaction.png</code></div>
+
+        <h3>C2. Multivariate Analysis — Pair Plot</h3>
+        <p>A Seaborn pairplot was generated for all numeric columns, color-coded by the <code>left</code> (attrition) variable.</p>
+
+        <h4>Key Separations Identified</h4>
+        
+        <h4>Pair 1: <code>satisfaction_level</code> vs <code>last_evaluation</code></h4>
+        <ul>
+            <li><strong>Departed employees</strong> (left=1) cluster in the <strong>bottom-right quadrant</strong>: LOW satisfaction (&lt; 0.4) + HIGH evaluation (&gt; 0.7)</li>
+            <li><strong>Retained employees</strong> (left=0) spread across the full range but concentrate in the <strong>top-left quadrant</strong>: HIGH satisfaction + MODERATE evaluation</li>
+            <li><strong>Interpretation:</strong> High performers who are dissatisfied are the most likely to leave</li>
+        </ul>
+
+        <h4>Pair 2: <code>average_montly_hours</code> vs <code>satisfaction_level</code></h4>
+        <ul>
+            <li><strong>Departed employees</strong> cluster at <strong>HIGH hours</strong> (250–300+) + <strong>LOW satisfaction</strong> (&lt; 0.4)</li>
+            <li><strong>Retained employees</strong> concentrate at <strong>MODERATE hours</strong> (150–220) + <strong>MODERATE-HIGH satisfaction</strong> (&gt; 0.5)</li>
+            <li><strong>Interpretation:</strong> Overwork is strongly associated with dissatisfaction and attrition — a classic burnout pattern</li>
+        </ul>
+
+        <div class="chart-ref"><strong>See:</strong> <code>outputs/partC2_pairplot.png</code></div>
+
+        <h3>C3. Correlation Analysis</h3>
+        <p><strong>Pearson Correlation: <code>last_evaluation</code> vs <code>number_project</code></strong></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Correlation Coefficient (r)</td><td><strong>0.3491</strong></td></tr>
+                <tr><td>p-value</td><td>0.00e+00</td></tr>
+                <tr><td>Strength</td><td><span class="badge badge-low">Weak</span></td></tr>
+                <tr><td>Direction</td><td>Positive</td></tr>
+                <tr><td>R² (Variance Explained)</td><td>12.18%</td></tr>
+            </tbody>
+        </table>
+
+        <div class="highlight">
+            <strong>Interpretation:</strong> The correlation coefficient of <strong>r = 0.3491</strong> indicates a <strong>weak positive relationship</strong> between the number of projects an employee handles and their evaluation score. R² = 12.18% of the variance in evaluation scores is explained by the number of projects.
+        </div>
+
+        <div class="chart-ref"><strong>See:</strong> <code>outputs/partC3_correlation_scatter.png</code></div>
+
+        <h2 id="part-d">Part D — Analytics Dashboard [5 Marks]</h2>
+
+        <h3>D1. Dashboard Overview</h3>
+        <p>A comprehensive 4-panel dashboard was built using Matplotlib and Seaborn as an alternative to Tableau/Power BI.</p>
+
+        <h4>Chart 1: Employee Attrition by Department (Grouped Bar Chart)</h4>
+        <ul>
+            <li><strong>Sales, Technical, and Support</strong> have the highest absolute attrition counts</li>
+            <li>Attrition rates across departments range from ~14.4% to ~29.1%</li>
+        </ul>
+
+        <h4>Chart 2: Satisfaction Level Distribution by Salary Band</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Salary Band</th>
+                    <th>Mean Satisfaction</th>
+                    <th>Std Dev</th>
+                    <th>Shape</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Low</td>
+                    <td>0.601</td>
+                    <td>0.255</td>
+                    <td>Bimodal — peak at ~0.1 and ~0.8</td>
+                </tr>
+                <tr>
+                    <td>Medium</td>
+                    <td>0.622</td>
+                    <td>0.245</td>
+                    <td>Near-normal — centered at ~0.6</td>
+                </tr>
+                <tr>
+                    <td>High</td>
+                    <td>0.637</td>
+                    <td>0.227</td>
+                    <td>Right-skewed — concentrated at ~0.7–0.9</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Chart 3: Last Evaluation vs Monthly Hours (Scatter Plot)</h4>
+        <ul>
+            <li>A distinct <strong>red cluster</strong> appears at <strong>high hours (250–310)</strong> + <strong>high evaluation (0.7–1.0)</strong> — departed high-performers</li>
+            <li><strong>Insight:</strong> The company is losing its hardest-working, highest-evaluated employees</li>
+        </ul>
+
+        <h4>Chart 4: Satisfaction by Department & Attrition Status (Box Plot)</h4>
+        <ul>
+            <li>Across <strong>all departments</strong>, departed employees have <strong>lower median satisfaction</strong></li>
+            <li>The satisfaction gap is consistent (~0.2–0.3 points) regardless of department</li>
+        </ul>
+
+        <div class="chart-ref"><strong>Full Dashboard:</strong> <code>outputs/partD_dashboard.png</code> (combined) or individual: <code>D1_barchart_attrition_by_dept.png</code>, <code>D2_histogram_satisfaction_by_salary.png</code>, <code>D3_scatter_evaluation_vs_hours.png</code>, <code>D4_boxplot_satisfaction_by_dept.png</code></div>
+
+        <h2 id="insights">Key HR Insights & Recommendations</h2>
+
+        <h3>Key Findings</h3>
+        <ol>
+            <li><strong>Burnout of High Performers:</strong> The most alarming pattern is employees who left had <strong>low satisfaction</strong> (mean ≈ 0.44) but <strong>high evaluation scores</strong> (mean ≈ 0.78) and <strong>worked excessive hours</strong> (mean ≈ 257 hrs/month). These are top performers who are burning out and leaving.</li>
+            <li><strong>Salary is a Key Satisfaction Driver:</strong> Low-salary employees show a bimodal satisfaction distribution — either very unhappy (~0.1) or surprisingly happy (~0.8). Medium and high-salary employees show more consistent, moderate-to-high satisfaction.</li>
+            <li><strong>Workload–Attrition Link:</strong> Employees handling 5+ projects and working 250+ hours/month are significantly more likely to leave, regardless of their evaluation scores.</li>
+            <li><strong>Universal Attrition Pattern:</strong> The satisfaction gap between stayed and left employees is consistent across all 10 departments, suggesting organization-wide issues rather than department-specific problems.</li>
+            <li><strong>Critical Tenure Window:</strong> Most attrition occurs at 3–5 years of tenure, suggesting employees reassess their career growth after the initial adjustment period.</li>
+            <li><strong>Evaluation System Bias:</strong> The weak correlation (r = 0.3491) between projects and evaluations suggests that employees who take on more work get rated higher, but this may not reflect actual quality.</li>
+        </ol>
+
+        <div class="recommendations">
+            <h3>Recommendations for HR Management</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Priority</th>
+                        <th>Action</th>
+                        <th>Expected Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td>Implement workload caps (max 4–5 projects per employee)</td>
+                        <td>Reduce burnout-driven attrition</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2</strong></td>
+                        <td>Review compensation for high-performing, low-satisfaction employees</td>
+                        <td>Retain top talent before they leave</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3</strong></td>
+                        <td>Introduce wellness programs for employees working 250+ hrs/month</td>
+                        <td>Address work-life balance concerns</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong></td>
+                        <td>Conduct stay interviews at the 2–3 year tenure mark</td>
+                        <td>Proactively address concerns before the 3–5 year attrition window</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5</strong></td>
+                        <td>Revise evaluation criteria to reward quality over quantity</td>
+                        <td>Ensure fair recognition for all employees</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Deliverables Checklist</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Deliverable</th>
+                    <th>File Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Data object classification table</td><td><code>outputs/partA_classification.csv</code></td></tr>
+                <tr><td>2</td><td>Statistical summary table</td><td><code>outputs/partB_statistical_summary.csv</code></td></tr>
+                <tr><td>3</td><td>Univariate plots (combined)</td><td><code>outputs/partC1_univariate_satisfaction.png</code></td></tr>
+                <tr><td>4</td><td>Histogram (individual)</td><td><code>outputs/C1a_histogram_satisfaction.png</code></td></tr>
+                <tr><td>5</td><td>Box plot (individual)</td><td><code>outputs/C1b_boxplot_satisfaction.png</code></td></tr>
+                <tr><td>6</td><td>Q-Q plot (individual)</td><td><code>outputs/C1c_qqplot_satisfaction.png</code></td></tr>
+                <tr><td>7</td><td>Pair plot</td><td><code>outputs/partC2_pairplot.png</code></td></tr>
+                <tr><td>8</td><td>Correlation scatter plot</td><td><code>outputs/partC3_correlation_scatter.png</code></td></tr>
+                <tr><td>9</td><td>Dashboard (combined)</td><td><code>outputs/partD_dashboard.png</code></td></tr>
+                <tr><td>10</td><td>D1: Attrition by Department</td><td><code>outputs/D1_barchart_attrition_by_dept.png</code></td></tr>
+                <tr><td>11</td><td>D2: Satisfaction by Salary</td><td><code>outputs/D2_histogram_satisfaction_by_salary.png</code></td></tr>
+                <tr><td>12</td><td>D3: Evaluation vs Hours Scatter</td><td><code>outputs/D3_scatter_evaluation_vs_hours.png</code></td></tr>
+                <tr><td>13</td><td>D4: Satisfaction Box Plot by Dept</td><td><code>outputs/D4_boxplot_satisfaction_by_dept.png</code></td></tr>
+                <tr><td>14</td><td>Report (Markdown)</td><td><code>outputs/assignment2_report.md</code></td></tr>
+                <tr><td>15</td><td>Report (HTML)</td><td><code>outputs/assignment2_report.html</code></td></tr>
+            </tbody>
+        </table>
+
+        <footer>
+            <p><em>Report generated automatically using Python. All statistics computed from HR_comma_sep.csv (14,995 records).</em></p>
+            <p><strong>LEVELING2108</strong> | BTech — Electronics & Communication Engineering | IIT Madras</p>
+        </footer>
+    </div>
+</body>
+</html>
