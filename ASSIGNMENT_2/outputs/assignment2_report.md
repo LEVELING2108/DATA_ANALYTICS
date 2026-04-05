@@ -6,6 +6,8 @@
 **Date:** 05 April 2026  
 **Marks:** [20 Marks]
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1szbUIrya42yP-jTuLPcJLhm_jzIP7Vp4?usp=sharing)
+
 ---
 
 ## Executive Summary

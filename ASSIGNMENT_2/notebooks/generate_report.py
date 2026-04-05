@@ -75,6 +75,8 @@ md_report = f"""# Assignment 2 — Data Objects, Attribute Types & Statistical D
 **Date:** {datetime.now().strftime('%d %B %Y')}  
 **Marks:** [20 Marks]
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1szbUIrya42yP-jTuLPcJLhm_jzIP7Vp4?usp=sharing)
+
 ---
 
 ## Executive Summary
@@ -613,6 +615,11 @@ html_report = f"""<!DOCTYPE html>
                 <strong>Dataset:</strong> HR_comma_sep.csv (14,995 employee records)<br>
                 <strong>Tools:</strong> Python, Pandas, NumPy, Matplotlib, Seaborn, SciPy |
                 <strong>Date:</strong> {datetime.now().strftime('%d %B %Y')}
+            </div>
+            <div style="margin-top: 15px;">
+                <a href="https://colab.research.google.com/drive/1szbUIrya42yP-jTuLPcJLhm_jzIP7Vp4?usp=sharing" target="_blank">
+                    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+                </a>
             </div>
         </header>
 
