@@ -1,0 +1,6 @@
+Statistic,Mean,Median,Mode,Range,Variance,Std Deviation,IQR,Min,Max
+satisfaction_level,0.6129,0.64,0.1,0.91,0.0618,0.2486,0.38,0.09,1.0
+last_evaluation,0.7161,0.72,0.55,0.64,0.0293,0.1712,0.31,0.36,1.0
+number_project,3.803,4.0,4.0,5.0,1.5185,1.2323,2.0,2.0,7.0
+average_montly_hours,201.0502,200.0,135.0,214.0,2494.3388,49.9434,89.0,96.0,310.0
+time_spend_company,3.4982,3.0,3.0,8.0,2.1324,1.4603,1.0,2.0,10.0
