@@ -69,10 +69,25 @@ python generate_report.py               # Generate Markdown + HTML reports
 
 ---
 
-### Assignment 3 — Sampling & Estimation
-*(Notebook and scripts in `ASSIGNMENT_3/`)*
+### Assignment 3 — Measuring Data Similarity & Dissimilarity
+**Datasets:** Wine (178 records) + Nutrient (27 records)
+**Tools:** Python, Pandas, NumPy, Matplotlib, Seaborn, SciPy (Google Colab)
 
-Covers sampling techniques (random, stratified, systematic), Central Limit Theorem demonstrations, and point/interval estimation.
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1AIDmsXjo35dPCS3AuQZA397vHeVQeJdg?usp=sharing)
+
+| Part | Task | Key Deliverables |
+|------|------|-----------------|
+| **A** | Data Matrix vs. Dissimilarity Matrix | 10×6 data matrix, Euclidean & Manhattan distance heatmaps, metric comparison |
+| **B** | Minkowski Distance Experiment | Pairwise distances for p={1,2,3,10}, line chart, Chebyshev convergence analysis |
+| **C** | Nominal & Binary Proximity | Energy/fat group similarity, Jaccard & SMC for binary attributes, discussion |
+| **D** | Cloud Deployment | Google Colab setup, reusable distance function, environment verification |
+
+**Key Findings:**
+- Manhattan distances are consistently larger than Euclidean (ratio ≈ 1.3-1.5×)
+- As p→∞, Minkowski distance converges to Chebyshev distance (max single attribute difference)
+- Jaccard similarity is more appropriate than SMC for asymmetric binary attributes
+
+**Outputs:** Euclidean/Manhattan heatmaps, Minkowski line chart, Jaccard/SMC comparison table, Colab screenshot
 
 ---
 
@@ -126,8 +141,8 @@ Covers classification algorithms (Logistic Regression, Decision Trees, KNN), tra
 3. **Open a notebook or run a script:**
 
    **Option A — Google Colab (recommended, no setup):**
-   - Click the **"Open in Colab"** badge above for Assignment 2
-   - Or open: [Assignment 2 Notebook](https://colab.research.google.com/drive/1szbUIrya42yP-jTuLPcJLhm_jzIP7Vp4?usp=sharing)
+   - Click the **"Open in Colab"** badge above for Assignment 2 or Assignment 3
+   - Or open: [Assignment 2 Notebook](https://colab.research.google.com/drive/1szbUIrya42yP-jTuLPcJLhm_jzIP7Vp4?usp=sharing) | [Assignment 3 Notebook](https://colab.research.google.com/drive/1AIDmsXjo35dPCS3AuQZA397vHeVQeJdg?usp=sharing)
    - Run all cells in order — dataset downloads automatically from Google Drive
 
    **Option B — Local Jupyter Notebook:**
@@ -137,6 +152,9 @@ Covers classification algorithms (Logistic Regression, Decision Trees, KNN), tra
 
    # Assignment 2
    jupyter notebook ASSIGNMENT_2/notebooks/Assignment2_HR_Analysis.ipynb
+
+   # Assignment 3
+   jupyter notebook ASSIGNMENT_3/notebooks/similarity_dissimilarity_assignment.ipynb
    ```
 
    **Option C — Run Python scripts locally:**
@@ -162,6 +180,12 @@ Covers classification algorithms (Logistic Regression, Decision Trees, KNN), tra
 - **File:** `ASSIGNMENT_2/data/HR_comma_sep.csv`
 - **Records:** 14,995
 - **Attributes:** satisfaction_level, last_evaluation, number_project, average_montly_hours, time_spend_company, Work_accident, left, promotion_last_5years, Department, salary
+
+### Assignment 3 — Wine & Nutrient Datasets
+- **Files:** `ASSIGNMENT_3/data/wine.csv`, `ASSIGNMENT_3/data/nutrient.csv`
+- **Records:** Wine (178), Nutrient (27)
+- **Attributes (Wine):** Alcohol, Malic, Ash, Alcalinity, Magnesium, Phenols, Flavanoids, Nonflavanoid, Proanthocyanins, Intensity, Hue, OD280, Proline
+- **Attributes (Nutrient):** Food_Item, energy, protein, fat, calcium, iron
 
 ---
 

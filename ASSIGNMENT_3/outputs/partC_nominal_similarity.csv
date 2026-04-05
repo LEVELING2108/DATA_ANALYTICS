@@ -1,0 +1,4 @@
+item1,item2,energy1,energy2,fat1,fat2,energy_match,fat_match,total_matches,similarity
+BEEF BRAISED,HAMBURGER,High,High,High,High,1,1,2,1.0
+BEEF BRAISED,BEEF ROAST,High,High,High,High,1,1,2,1.0
+HAMBURGER,CHICKEN BROILED,High,Low,High,Low,0,0,0,0.0

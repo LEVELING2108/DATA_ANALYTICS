@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3 - Data Similarity & Dissimilarity</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 8px;
+            margin-top: 40px;
+        }
+        h3 {
+            color: #7f8c8d;
+            margin-top: 30px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .highlight {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .summary-table {
+            background-color: #e8f8f5;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Data Analytics Assignment — Question 3</h1>
+        <h2>Measuring Data Similarity & Dissimilarity</h2>
+        <p><strong>Generated:</strong> 2026-04-06 00:28:42</p>
+        <p><strong>Datasets:</strong> wine.csv (178 records) + nutrient.csv (27 records)</p>
+
+        <h2>Part A – Data Matrix vs. Dissimilarity Matrix</h2>
+        
+        <h3>Euclidean Dissimilarity Matrix</h3>
+        <table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Wine 1</th>
+      <th>Wine 2</th>
+      <th>Wine 3</th>
+      <th>Wine 4</th>
+      <th>Wine 5</th>
+      <th>Wine 6</th>
+      <th>Wine 7</th>
+      <th>Wine 8</th>
+      <th>Wine 9</th>
+      <th>Wine 10</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Wine 1</th>
+      <td>0.00</td>
+      <td>27.02</td>
+      <td>26.03</td>
+      <td>14.05</td>
+      <td>9.12</td>
+      <td>15.01</td>
+      <td>31.01</td>
+      <td>6.05</td>
+      <td>30.01</td>
+      <td>29.01</td>
+    </tr>
+    <tr>
+      <th>Wine 2</th>
+      <td>27.02</td>
+      <td>0.00</td>
+      <td>1.37</td>
+      <td>13.13</td>
+      <td>18.03</td>
+      <td>12.08</td>
+      <td>4.20</td>
+      <td>21.03</td>
+      <td>3.43</td>
+      <td>2.21</td>
+    </tr>
+    <tr>
+      <th>Wine 3</th>
+      <td>26.03</td>
+      <td>1.37</td>
+      <td>0.00</td>
+      <td>12.12</td>
+      <td>17.01</td>
+      <td>11.08</td>
+      <td>5.24</td>
+      <td>20.04</td>
+      <td>4.43</td>
+      <td>3.27</td>
+    </tr>
+    <tr>
+      <th>Wine 4</th>
+      <td>14.05</td>
+      <td>13.13</td>
+      <td>12.12</td>
+      <td>0.00</td>
+      <td>5.34</td>
+      <td>1.19</td>
+      <td>17.08</td>
+      <td>8.16</td>
+      <td>16.06</td>
+      <td>15.05</td>
+    </tr>
+    <tr>
+      <th>Wine 5</th>
+      <td>9.12</td>
+      <td>18.03</td>
+      <td>17.01</td>
+      <td>5.34</td>
+      <td>0.00</td>
+      <td>6.20</td>
+      <td>22.05</td>
+      <td>3.16</td>
+      <td>21.10</td>
+      <td>20.06</td>
+    </tr>
+    <tr>
+      <th>Wine 6</th>
+      <td>15.01</td>
+      <td>12.08</td>
+      <td>11.08</td>
+      <td>1.19</td>
+      <td>6.20</td>
+      <td>0.00</td>
+      <td>16.04</td>
+      <td>9.08</td>
+      <td>15.03</td>
+      <td>14.02</td>
+    </tr>
+    <tr>
+      <th>Wine 7</th>
+      <td>31.01</td>
+      <td>4.20</td>
+      <td>5.24</td>
+      <td>17.08</td>
+      <td>22.05</td>
+      <td>16.04</td>
+      <td>0.00</td>
+      <td>25.00</td>
+      <td>1.27</td>
+      <td>2.28</td>
+    </tr>
+    <tr>
+      <th>Wine 8</th>
+      <td>6.05</td>
+      <td>21.03</td>
+      <td>20.04</td>
+      <td>8.16</td>
+      <td>3.16</td>
+      <td>9.08</td>
+      <td>25.00</td>
+      <td>0.00</td>
+      <td>24.03</td>
+      <td>23.03</td>
+    </tr>
+    <tr>
+      <th>Wine 9</th>
+      <td>30.01</td>
+      <td>3.43</td>
+      <td>4.43</td>
+      <td>16.06</td>
+      <td>21.10</td>
+      <td>15.03</td>
+      <td>1.27</td>
+      <td>24.03</td>
+      <td>0.00</td>
+      <td>1.45</td>
+    </tr>
+    <tr>
+      <th>Wine 10</th>
+      <td>29.01</td>
+      <td>2.21</td>
+      <td>3.27</td>
+      <td>15.05</td>
+      <td>20.06</td>
+      <td>14.02</td>
+      <td>2.28</td>
+      <td>23.03</td>
+      <td>1.45</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table>
+        
+        <h3>Manhattan (L1) Dissimilarity Matrix</h3>
+        <table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Wine 1</th>
+      <th>Wine 2</th>
+      <th>Wine 3</th>
+      <th>Wine 4</th>
+      <th>Wine 5</th>
+      <th>Wine 6</th>
+      <th>Wine 7</th>
+      <th>Wine 8</th>
+      <th>Wine 9</th>
+      <th>Wine 10</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Wine 1</th>
+      <td>0.00</td>
+      <td>28.84</td>
+      <td>28.14</td>
+      <td>15.93</td>
+      <td>11.68</td>
+      <td>15.90</td>
+      <td>32.18</td>
+      <td>7.54</td>
+      <td>31.01</td>
+      <td>30.16</td>
+    </tr>
+    <tr>
+      <th>Wine 2</th>
+      <td>28.84</td>
+      <td>0.00</td>
+      <td>2.78</td>
+      <td>16.63</td>
+      <td>19.80</td>
+      <td>14.58</td>
+      <td>5.98</td>
+      <td>23.00</td>
+      <td>5.17</td>
+      <td>3.94</td>
+    </tr>
+    <tr>
+      <th>Wine 3</th>
+      <td>28.14</td>
+      <td>2.78</td>
+      <td>0.00</td>
+      <td>15.09</td>
+      <td>18.06</td>
+      <td>13.48</td>
+      <td>7.96</td>
+      <td>22.10</td>
+      <td>7.15</td>
+      <td>5.38</td>
+    </tr>
+    <tr>
+      <th>Wine 4</th>
+      <td>15.93</td>
+      <td>16.63</td>
+      <td>15.09</td>
+      <td>0.00</td>
+      <td>8.99</td>
+      <td>2.09</td>
+      <td>19.47</td>
+      <td>10.85</td>
+      <td>18.66</td>
+      <td>17.55</td>
+    </tr>
+    <tr>
+      <th>Wine 5</th>
+      <td>11.68</td>
+      <td>19.80</td>
+      <td>18.06</td>
+      <td>8.99</td>
+      <td>0.00</td>
+      <td>9.38</td>
+      <td>24.76</td>
+      <td>4.90</td>
+      <td>24.53</td>
+      <td>23.10</td>
+    </tr>
+    <tr>
+      <th>Wine 6</th>
+      <td>15.90</td>
+      <td>14.58</td>
+      <td>13.48</td>
+      <td>2.09</td>
+      <td>9.38</td>
+      <td>0.00</td>
+      <td>17.94</td>
+      <td>11.24</td>
+      <td>16.91</td>
+      <td>15.46</td>
+    </tr>
+    <tr>
+      <th>Wine 7</th>
+      <td>32.18</td>
+      <td>5.98</td>
+      <td>7.96</td>
+      <td>19.47</td>
+      <td>24.76</td>
+      <td>17.94</td>
+      <td>0.00</td>
+      <td>25.88</td>
+      <td>2.71</td>
+      <td>4.34</td>
+    </tr>
+    <tr>
+      <th>Wine 8</th>
+      <td>7.54</td>
+      <td>23.00</td>
+      <td>22.10</td>
+      <td>10.85</td>
+      <td>4.90</td>
+      <td>11.24</td>
+      <td>25.88</td>
+      <td>0.00</td>
+      <td>26.39</td>
+      <td>25.36</td>
+    </tr>
+    <tr>
+      <th>Wine 9</th>
+      <td>31.01</td>
+      <td>5.17</td>
+      <td>7.15</td>
+      <td>18.66</td>
+      <td>24.53</td>
+      <td>16.91</td>
+      <td>2.71</td>
+      <td>26.39</td>
+      <td>0.00</td>
+      <td>2.71</td>
+    </tr>
+    <tr>
+      <th>Wine 10</th>
+      <td>30.16</td>
+      <td>3.94</td>
+      <td>5.38</td>
+      <td>17.55</td>
+      <td>23.10</td>
+      <td>15.46</td>
+      <td>4.34</td>
+      <td>25.36</td>
+      <td>2.71</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table>
+        
+        <h3>Comparison Statistics</h3>
+        <table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Metric</th>
+      <th>Mean</th>
+      <th>Max</th>
+      <th>Min</th>
+      <th>Std</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Euclidean</td>
+      <td>13.392345</td>
+      <td>31.006986</td>
+      <td>1.189075</td>
+      <td>8.795759</td>
+    </tr>
+    <tr>
+      <td>Manhattan</td>
+      <td>15.460000</td>
+      <td>32.180000</td>
+      <td>2.090000</td>
+      <td>8.759298</td>
+    </tr>
+  </tbody>
+</table>
+        
+        <div class="highlight">
+            <strong>Key Finding:</strong> Manhattan distances are consistently larger than Euclidean distances.
+            Manhattan distance produces more extreme dissimilarity values because it sums absolute differences
+            across all dimensions without the moderating effect of the square-root operation.
+        </div>
+
+        <h2>Part B – Minkowski Distance Experiment</h2>
+        
+        <h3>Minkowski Distance Table</h3>
+        <table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Wine 1 vs Wine 5</th>
+      <th>Wine 1 vs Wine 9</th>
+      <th>Wine 5 vs Wine 9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>p=1</th>
+      <td>11.6800</td>
+      <td>31.0100</td>
+      <td>24.5300</td>
+    </tr>
+    <tr>
+      <th>p=2</th>
+      <td>9.1151</td>
+      <td>30.0073</td>
+      <td>21.0951</td>
+    </tr>
+    <tr>
+      <th>p=3</th>
+      <td>9.0074</td>
+      <td>30.0001</td>
+      <td>21.0040</td>
+    </tr>
+    <tr>
+      <th>p=10</th>
+      <td>9.0000</td>
+      <td>30.0000</td>
+      <td>21.0000</td>
+    </tr>
+  </tbody>
+</table>
+        
+        <div class="highlight">
+            <strong>Effect of Increasing p:</strong> As p increases, the Minkowski distance converges toward
+            the Chebyshev distance (maximum metric), where only the largest single attribute difference matters.
+        </div>
+
+        <h2>Part C – Proximity for Nominal & Binary Attributes</h2>
+        
+        <h3>Nutrient Groups</h3>
+        <table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Food_Item</th>
+      <th>energy</th>
+      <th>energy_group</th>
+      <th>fat</th>
+      <th>fat_group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BEEF BRAISED</td>
+      <td>340</td>
+      <td>High</td>
+      <td>28</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <td>HAMBURGER</td>
+      <td>245</td>
+      <td>High</td>
+      <td>17</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <td>BEEF ROAST</td>
+      <td>420</td>
+      <td>High</td>
+      <td>39</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <td>BEEF STEAK</td>
+      <td>375</td>
+      <td>High</td>
+      <td>32</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <td>BEEF CANNED</td>
+      <td>180</td>
+      <td>Medium</td>
+      <td>10</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <td>CHICKEN BROILED</td>
+      <td>115</td>
+      <td>Low</td>
+      <td>3</td>
+      <td>Low</td>
+    </tr>
+    <tr>
+      <td>CHICKEN CANNED</td>
+      <td>170</td>
+      <td>Medium</td>
+      <td>7</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <td>BEEF HEART</td>
+      <td>160</td>
+      <td>Medium</td>
+      <td>5</td>
+      <td>Low</td>
+    </tr>
+    <tr>
+      <td>LAMB LEG ROAST</td>
+      <td>265</td>
+      <td>High</td>
+      <td>20</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <td>LAMB SHOULDER ROAST</td>
+      <td>300</td>
+      <td>High</td>
+      <td>25</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <td>SMOKED HAM</td>
+      <td>340</td>
+      <td>High</td>
+      <td>28</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <td>PORK ROAST</td>
+      <td>340</td>
+      <td>High</td>
+      <td>29</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <td>PORK SIMMERED</td>
+      <td>355</td>
+      <td>High</td>
+      <td>30</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <td>BEEF TONGUE</td>
+      <td>205</td>
+      <td>Medium</td>
+      <td>14</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <td>VEAL CUTLET</td>
+      <td>185</td>
+      <td>Medium</td>
+      <td>9</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <td>BLUEFISH BAKED</td>
+      <td>135</td>
+      <td>Low</td>
+      <td>4</td>
+      <td>Low</td>
+    </tr>
+    <tr>
+      <td>CLAMS RAW</td>
+      <td>70</td>
+      <td>Low</td>
+      <td>1</td>
+      <td>Low</td>
+    </tr>
+    <tr>
+      <td>CLAMS CANNED</td>
+      <td>45</td>
+      <td>Low</td>
+      <td>1</td>
+      <td>Low</td>
+    </tr>
+    <tr>
+      <td>CRABMEAT CANNED</td>
+      <td>90</td>
+      <td>Low</td>
+      <td>2</td>
+      <td>Low</td>
+    </tr>
+    <tr>
+      <td>HADDOCK FRIED</td>
+      <td>135</td>
+      <td>Low</td>
+      <td>5</td>
+      <td>Low</td>
+    </tr>
+    <tr>
+      <td>MACKEREL BROILED</td>
+      <td>200</td>
+      <td>Medium</td>
+      <td>13</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <td>MACKEREL CANNED</td>
+      <td>155</td>
+      <td>Low</td>
+      <td>9</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <td>PERCH FRIED</td>
+      <td>195</td>
+      <td>Medium</td>
+      <td>11</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <td>SALMON CANNED</td>
+      <td>120</td>
+      <td>Low</td>
+      <td>5</td>
+      <td>Low</td>
+    </tr>
+    <tr>
+      <td>SARDINES CANNED</td>
+      <td>180</td>
+      <td>Medium</td>
+      <td>9</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <td>TUNA CANNED</td>
+      <td>170</td>
+      <td>Medium</td>
+      <td>7</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <td>SHRIMP CANNED</td>
+      <td>110</td>
+      <td>Low</td>
+      <td>1</td>
+      <td>Low</td>
+    </tr>
+  </tbody>
+</table>
+        
+        <h3>Nominal Similarity Results</h3>
+        <table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>item1</th>
+      <th>item2</th>
+      <th>energy1</th>
+      <th>energy2</th>
+      <th>fat1</th>
+      <th>fat2</th>
+      <th>energy_match</th>
+      <th>fat_match</th>
+      <th>total_matches</th>
+      <th>similarity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BEEF BRAISED</td>
+      <td>HAMBURGER</td>
+      <td>High</td>
+      <td>High</td>
+      <td>High</td>
+      <td>High</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <td>BEEF BRAISED</td>
+      <td>BEEF ROAST</td>
+      <td>High</td>
+      <td>High</td>
+      <td>High</td>
+      <td>High</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <td>HAMBURGER</td>
+      <td>CHICKEN BROILED</td>
+      <td>High</td>
+      <td>Low</td>
+      <td>High</td>
+      <td>Low</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+        
+        <h3>Jaccard Similarity vs. SMC</h3>
+        <table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Pair</th>
+      <th>M11</th>
+      <th>M00</th>
+      <th>M01</th>
+      <th>M10</th>
+      <th>Jaccard</th>
+      <th>SMC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BEEF BRAISED vs HAMBURGER</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <td>BEEF BRAISED vs CHICKEN BROILED</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.5</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <td>CHICKEN BROILED vs SARDINES CANNED</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+        
+        <div class="highlight">
+            <strong>Jaccard vs. SMC:</strong> For asymmetric binary attributes (high_protein, high_iron),
+            Jaccard similarity is preferred because it focuses on shared presences (M11) rather than
+            shared absences (M00), which aligns with how we intuitively compare nutritional profiles.
+        </div>
+
+        <h2>Part D – Cloud Deployment</h2>
+        
+        <p>This assignment runs on <strong>Google Colab</strong> with reusable distance functions
+        and reproducible analysis.</p>
+        
+        <pre>
+def minkowski_distance(x, y, p=2):
+    return np.power(np.sum(np.abs(x - y) ** p), 1/p)
+        </pre>
+
+        <h2>Summary of Deliverables</h2>
+        <table class="summary-table">
+            <tr><th>Part</th><th>Deliverable</th><th>Status</th></tr>
+            <tr><td>A</td><td>10×6 data matrix</td><td>✅</td></tr>
+            <tr><td>A</td><td>Euclidean distance heatmap</td><td>✅</td></tr>
+            <tr><td>A</td><td>Manhattan distance heatmap</td><td>✅</td></tr>
+            <tr><td>A</td><td>Metric comparison</td><td>✅</td></tr>
+            <tr><td>B</td><td>Minkowski distance table</td><td>✅</td></tr>
+            <tr><td>B</td><td>Line chart (distance vs. p)</td><td>✅</td></tr>
+            <tr><td>B</td><td>Chebyshev convergence explanation</td><td>✅</td></tr>
+            <tr><td>C</td><td>Nominal similarity calculation</td><td>✅</td></tr>
+            <tr><td>C</td><td>Binary attributes</td><td>✅</td></tr>
+            <tr><td>C</td><td>Jaccard & SMC for 3 pairs</td><td>✅</td></tr>
+            <tr><td>C</td><td>Jaccard vs. SMC discussion</td><td>✅</td></tr>
+            <tr><td>D</td><td>Cloud deployment setup</td><td>✅</td></tr>
+            <tr><td>D</td><td>Reusable distance function</td><td>✅</td></tr>
+        </table>
+    </div>
+</body>
+</html>
