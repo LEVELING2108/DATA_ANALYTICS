@@ -5,6 +5,8 @@
 **Records:** 1,338 (1,337 after cleaning)
 **Attributes:** age, sex, bmi, children, smoker, region, charges
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/157O99ZYtR4uFgRoAdOcbkEZgiRpMkBth?usp=sharing)
+
 ---
 
 ## Part A – Attribute Type Identification [3 Marks]

@@ -23,6 +23,8 @@ ASSIGNMENT_N/
 ### Assignment 1 — Understanding Data & Attribute Classification
 **Dataset:** Insurance charges (1,338 records)
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/157O99ZYtR4uFgRoAdOcbkEZgiRpMkBth?usp=sharing)
+
 | Part | Task | Key Deliverables |
 |------|------|-----------------|
 | **A** | Attribute Type Identification | Classification of age, sex, bmi, children, smoker, region, charges as discrete/continuous/nominal |
