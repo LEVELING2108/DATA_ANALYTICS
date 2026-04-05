@@ -2,7 +2,7 @@
 
 A comprehensive data analytics project covering exploratory data analysis, statistical modeling, hypothesis testing, and machine learning — implemented across 6 assignments using Python, pandas, matplotlib, seaborn, and scikit-learn.
 
-[![Open Assignment 2 in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS/blob/main/ASSIGNMENT_2/notebooks/Assignment2_HR_Analysis.ipynb)
+[![Open Assignment 2 in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1szbUIrya42yP-jTuLPcJLhm_jzIP7Vp4?usp=sharing)
 
 ---
 
@@ -42,7 +42,7 @@ ASSIGNMENT_N/
 **Dataset:** HR employee records (14,995 records)
 **Tools:** Python, Pandas, NumPy, Matplotlib, Seaborn, SciPy (no Tableau/Power BI)
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS/blob/main/ASSIGNMENT_2/notebooks/Assignment2_HR_Analysis.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1szbUIrya42yP-jTuLPcJLhm_jzIP7Vp4?usp=sharing)
 
 | Part | Task | Key Deliverables |
 |------|------|-----------------|
@@ -127,7 +127,7 @@ Covers classification algorithms (Logistic Regression, Decision Trees, KNN), tra
 
    **Option A — Google Colab (recommended, no setup):**
    - Click the **"Open in Colab"** badge above for Assignment 2
-   - Or open: [Assignment 2 Notebook](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS/blob/main/ASSIGNMENT_2/notebooks/Assignment2_HR_Analysis.ipynb)
+   - Or open: [Assignment 2 Notebook](https://colab.research.google.com/drive/1szbUIrya42yP-jTuLPcJLhm_jzIP7Vp4?usp=sharing)
    - Run all cells in order — dataset downloads automatically from Google Drive
 
    **Option B — Local Jupyter Notebook:**
