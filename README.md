@@ -2,6 +2,8 @@
 
 A comprehensive data analytics project covering exploratory data analysis, statistical modeling, hypothesis testing, and machine learning — implemented across 6 assignments using Python, pandas, matplotlib, seaborn, and scikit-learn.
 
+[![Open Assignment 2 in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS/blob/main/ASSIGNMENT_2/notebooks/Assignment2_HR_Analysis.ipynb)
+
 ---
 
 ## Project Structure
@@ -39,6 +41,8 @@ ASSIGNMENT_N/
 ### Assignment 2 — Data Objects, Attribute Types & Statistical Descriptions
 **Dataset:** HR employee records (14,995 records)
 **Tools:** Python, Pandas, NumPy, Matplotlib, Seaborn, SciPy (no Tableau/Power BI)
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS/blob/main/ASSIGNMENT_2/notebooks/Assignment2_HR_Analysis.ipynb)
 
 | Part | Task | Key Deliverables |
 |------|------|-----------------|
@@ -120,13 +124,27 @@ Covers classification algorithms (Logistic Regression, Decision Trees, KNN), tra
    ```
 
 3. **Open a notebook or run a script:**
+
+   **Option A — Google Colab (recommended, no setup):**
+   - Click the **"Open in Colab"** badge above for Assignment 2
+   - Or open: [Assignment 2 Notebook](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS/blob/main/ASSIGNMENT_2/notebooks/Assignment2_HR_Analysis.ipynb)
+   - Run all cells in order — dataset downloads automatically from Google Drive
+
+   **Option B — Local Jupyter Notebook:**
    ```bash
    # Assignment 1
    jupyter notebook ASSIGNMENT_1/notebooks/insurance_assignment.ipynb
 
    # Assignment 2
+   jupyter notebook ASSIGNMENT_2/notebooks/Assignment2_HR_Analysis.ipynb
+   ```
+
+   **Option C — Run Python scripts locally:**
+   ```bash
    cd ASSIGNMENT_2/notebooks
-   python assignment2_analysis.py
+   python assignment2_analysis.py          # Run full analysis
+   python generate_individual_plots.py     # Generate individual plot images
+   python generate_report.py               # Generate Markdown + HTML reports
    ```
 
 4. **Run all cells** to reproduce analysis, visualizations, and outputs.
