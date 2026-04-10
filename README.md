@@ -1,5 +1,12 @@
 # Data Analytics Assignment — BTech ECE
 
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)
+![Pandas](https://img.shields.io/badge/Pandas-2.x-150458?logo=pandas)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.x-F7931E?logo=scikit-learn)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-In%20Progress-orange)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS.git)
+
 A comprehensive data analytics project covering exploratory data analysis, statistical modeling, hypothesis testing, and machine learning — implemented across 6 assignments using Python, pandas, matplotlib, seaborn, and scikit-learn.
 
 ---
