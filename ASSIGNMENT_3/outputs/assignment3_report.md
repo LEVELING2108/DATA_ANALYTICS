@@ -1,6 +1,6 @@
 # Assignment 3 — Measuring Data Similarity & Dissimilarity
 
-**Course:** Data Analytics | **Program:** B.Tech ECE — IIT Madras
+**Course:** Data Analytics | **Program:** B.Tech ECE
 **Datasets:** wine.csv (178 records) + nutrient.csv (27 records)
 **Tools Used:** Python, Pandas, NumPy, Matplotlib, Seaborn, SciPy
 **Date:** 06 April 2026
