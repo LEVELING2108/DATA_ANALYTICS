@@ -198,6 +198,5 @@ Covers classification algorithms (Logistic Regression, Decision Trees, KNN), tra
 
 ## Author
 
-**LEVELING2108**  
-BTech — Electronics & Communication Engineering  
-IIT Madras (Study Programme)
+**LEVELING2108**
+BTech — Electronics & Communication Engineering

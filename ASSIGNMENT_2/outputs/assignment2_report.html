@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment 2 — HR Dataset Analysis Report</title>
+    <title>Assignment 2 â€” HR Dataset Analysis Report</title>
     <style>
         :root {
             --primary: #2c3e50;
@@ -136,7 +136,7 @@
             margin: 15px 0;
         }
         .chart-ref::before {
-            content: "📊 ";
+            content: "ðŸ“Š ";
         }
         ul, ol {
             margin: 15px 0 15px 30px;
@@ -218,9 +218,9 @@
 <body>
     <div class="container">
         <header>
-            <h1>Assignment 2 — Data Objects, Attribute Types & Statistical Descriptions</h1>
+            <h1>Assignment 2 â€” Data Objects, Attribute Types & Statistical Descriptions</h1>
             <div class="meta">
-                <strong>Course:</strong> Data Analytics | <strong>Program:</strong> B.Tech ECE — IIT Madras<br>
+                <strong>Course:</strong> Data Analytics | <strong>Program:</strong> B.Tech ECE â€” <br>
                 <strong>Dataset:</strong> HR_comma_sep.csv (14,995 employee records)<br>
                 <strong>Tools:</strong> Python, Pandas, NumPy, Matplotlib, Seaborn, SciPy |
                 <strong>Date:</strong> 05 April 2026
@@ -234,22 +234,22 @@
 
         <div class="executive-summary">
             <h2>Executive Summary</h2>
-            <p>This report presents a comprehensive statistical analysis of the HR employee dataset containing 14,995 records. The analysis covers data object classification, measures of central tendency and dispersion, univariate and multivariate analysis, and a full analytics dashboard — all implemented in Python without reliance on Tableau or Power BI.</p>
-            <p style="margin-top: 10px;"><strong>Key Finding:</strong> Employees who leave the company exhibit a distinct pattern — <strong>low satisfaction (mean ≈ 0.44)</strong> combined with <strong>high evaluation scores (mean ≈ 0.78)</strong> and <strong>excessive monthly hours (mean ≈ 257)</strong>, suggesting burnout among high performers is the primary attrition driver.</p>
+            <p>This report presents a comprehensive statistical analysis of the HR employee dataset containing 14,995 records. The analysis covers data object classification, measures of central tendency and dispersion, univariate and multivariate analysis, and a full analytics dashboard â€” all implemented in Python without reliance on Tableau or Power BI.</p>
+            <p style="margin-top: 10px;"><strong>Key Finding:</strong> Employees who leave the company exhibit a distinct pattern â€” <strong>low satisfaction (mean â‰ˆ 0.44)</strong> combined with <strong>high evaluation scores (mean â‰ˆ 0.78)</strong> and <strong>excessive monthly hours (mean â‰ˆ 257)</strong>, suggesting burnout among high performers is the primary attrition driver.</p>
         </div>
 
         <div class="toc">
             <h3>Table of Contents</h3>
             <ul>
-                <li><a href="#part-a">Part A — Data Object Classification</a></li>
-                <li><a href="#part-b">Part B — Central Tendency & Dispersion</a></li>
-                <li><a href="#part-c">Part C — Univariate & Multivariate Analysis</a></li>
-                <li><a href="#part-d">Part D — Analytics Dashboard</a></li>
+                <li><a href="#part-a">Part A â€” Data Object Classification</a></li>
+                <li><a href="#part-b">Part B â€” Central Tendency & Dispersion</a></li>
+                <li><a href="#part-c">Part C â€” Univariate & Multivariate Analysis</a></li>
+                <li><a href="#part-d">Part D â€” Analytics Dashboard</a></li>
                 <li><a href="#insights">Key HR Insights & Recommendations</a></li>
             </ul>
         </div>
 
-        <h2 id="part-a">Part A — Data Object Classification [4 Marks]</h2>
+        <h2 id="part-a">Part A â€” Data Object Classification [4 Marks]</h2>
         
         <h3>A1. Classification Table</h3>
         <p>The HR dataset contains 14,995 independent employee records with 10 attributes. Each attribute is classified below according to the data type taxonomy from Unit II.</p>
@@ -264,24 +264,24 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>Quantitative — Continuous</strong></td>
+                    <td><strong>Quantitative â€” Continuous</strong></td>
                     <td><code>satisfaction_level</code>, <code>last_evaluation</code>, <code>average_montly_hours</code></td>
                     <td>Continuous numeric measurements on a scale with meaningful arithmetic operations.</td>
                 </tr>
                 <tr>
-                    <td><strong>Quantitative — Discrete</strong></td>
+                    <td><strong>Quantitative â€” Discrete</strong></td>
                     <td><code>number_project</code>, <code>time_spend_company</code></td>
                     <td>Discrete numeric values (counts/years). Support arithmetic but take only integer values.</td>
                 </tr>
                 <tr>
-                    <td><strong>Categorical — Nominal</strong></td>
+                    <td><strong>Categorical â€” Nominal</strong></td>
                     <td><code>Department</code></td>
                     <td>Named categories with no inherent ordering: sales, accounting, hr, technical, support, management, IT, product_mng, marketing, RandD.</td>
                 </tr>
                 <tr>
-                    <td><strong>Categorical — Ordinal</strong></td>
+                    <td><strong>Categorical â€” Ordinal</strong></td>
                     <td><code>salary</code></td>
-                    <td>Categories (low, medium, high) with a natural ordering from low → high.</td>
+                    <td>Categories (low, medium, high) with a natural ordering from low â†’ high.</td>
                 </tr>
                 <tr>
                     <td><strong>Binary (Dichotomous)</strong></td>
@@ -310,7 +310,7 @@
                 </tr>
                 <tr>
                     <td><strong>Causal</strong></td>
-                    <td><code>Work_accident</code> → <code>satisfaction_level</code> → <code>left</code></td>
+                    <td><code>Work_accident</code> â†’ <code>satisfaction_level</code> â†’ <code>left</code></td>
                     <td>Accidents may reduce satisfaction, increasing attrition risk</td>
                 </tr>
                 <tr>
@@ -325,7 +325,7 @@
             <strong>Conclusion:</strong> While the dataset is treated as independent observations, real-world HR data likely contains unobserved dependencies that should be considered in advanced modeling.
         </div>
 
-        <h2 id="part-b">Part B — Central Tendency & Dispersion [6 Marks]</h2>
+        <h2 id="part-b">Part B â€” Central Tendency & Dispersion [6 Marks]</h2>
 
         <h3>B1. Statistical Summary Table</h3>
         <table>
@@ -440,31 +440,31 @@
                     <td><code>time_spend_company</code></td>
                     <td>41.74%</td>
                     <td><span class="badge badge-moderate">Moderately Dispersed</span></td>
-                    <td>Employee tenure varies significantly — mix of new joiners and long-tenured staff</td>
+                    <td>Employee tenure varies significantly â€” mix of new joiners and long-tenured staff</td>
                 </tr>
                 <tr>
                     <td><code>satisfaction_level</code></td>
                     <td>40.56%</td>
                     <td><span class="badge badge-moderate">Moderately Dispersed</span></td>
-                    <td>Wide spread in satisfaction — bimodal distribution with clusters at very low (~0.1) and high (~0.8)</td>
+                    <td>Wide spread in satisfaction â€” bimodal distribution with clusters at very low (~0.1) and high (~0.8)</td>
                 </tr>
                 <tr>
                     <td><code>number_project</code></td>
                     <td>32.4%</td>
                     <td><span class="badge badge-moderate">Moderately Dispersed</span></td>
-                    <td>Employees handle 2–7 projects; moderate workload variation</td>
+                    <td>Employees handle 2â€“7 projects; moderate workload variation</td>
                 </tr>
                 <tr>
                     <td><code>average_montly_hours</code></td>
                     <td>24.84%</td>
                     <td><span class="badge badge-low">Tightly Clustered</span></td>
-                    <td>Most employees work 150–250 hours/month; relatively consistent workload</td>
+                    <td>Most employees work 150â€“250 hours/month; relatively consistent workload</td>
                 </tr>
                 <tr>
                     <td><code>last_evaluation</code></td>
                     <td>23.9%</td>
                     <td><span class="badge badge-low">Tightly Clustered</span></td>
-                    <td>Evaluation scores concentrate around 0.7–0.9; most employees rated similarly</td>
+                    <td>Evaluation scores concentrate around 0.7â€“0.9; most employees rated similarly</td>
                 </tr>
             </tbody>
         </table>
@@ -472,15 +472,15 @@
         <div class="highlight">
             <strong>Key Observations:</strong>
             <ul>
-                <li><strong>Most dispersed:</strong> <code>time_spend_company</code> (CV = 41.74%) — indicates diverse tenure distribution</li>
-                <li><strong>Least dispersed:</strong> <code>last_evaluation</code> (CV = 23.9%) — evaluation scores are tightly grouped</li>
+                <li><strong>Most dispersed:</strong> <code>time_spend_company</code> (CV = 41.74%) â€” indicates diverse tenure distribution</li>
+                <li><strong>Least dispersed:</strong> <code>last_evaluation</code> (CV = 23.9%) â€” evaluation scores are tightly grouped</li>
                 <li><strong>Bimodal satisfaction:</strong> The mean (0.6129) is lower than the median (0.64), indicating left-skew</li>
             </ul>
         </div>
 
-        <h2 id="part-c">Part C — Univariate & Multivariate Analysis [5 Marks]</h2>
+        <h2 id="part-c">Part C â€” Univariate & Multivariate Analysis [5 Marks]</h2>
 
-        <h3>C1. Univariate Analysis — <code>satisfaction_level</code></h3>
+        <h3>C1. Univariate Analysis â€” <code>satisfaction_level</code></h3>
         
         <h4>Distribution Characteristics</h4>
         <table>
@@ -499,7 +499,7 @@
             </tbody>
         </table>
 
-        <p><strong>Skewness Interpretation:</strong> The negative skew (-0.4766) indicates a <strong>left-skewed distribution</strong> — the tail extends toward lower satisfaction values, meaning more employees cluster at higher satisfaction levels, but a significant minority report very low satisfaction.</p>
+        <p><strong>Skewness Interpretation:</strong> The negative skew (-0.4766) indicates a <strong>left-skewed distribution</strong> â€” the tail extends toward lower satisfaction values, meaning more employees cluster at higher satisfaction levels, but a significant minority report very low satisfaction.</p>
 
         <h4>Outlier Analysis (IQR Method)</h4>
         <table>
@@ -513,8 +513,8 @@
                 <tr><td>Q1 (25th percentile)</td><td>0.44</td></tr>
                 <tr><td>Q3 (75th percentile)</td><td>0.82</td></tr>
                 <tr><td>IQR</td><td>0.38</td></tr>
-                <tr><td>Lower Bound (Q1 − 1.5×IQR)</td><td>-0.13</td></tr>
-                <tr><td>Upper Bound (Q3 + 1.5×IQR)</td><td>1.39</td></tr>
+                <tr><td>Lower Bound (Q1 âˆ’ 1.5Ã—IQR)</td><td>-0.13</td></tr>
+                <tr><td>Upper Bound (Q3 + 1.5Ã—IQR)</td><td>1.39</td></tr>
                 <tr><td>Outliers Detected</td><td><strong>0</strong></td></tr>
             </tbody>
         </table>
@@ -522,14 +522,14 @@
         <div class="insight">
             <strong>Finding:</strong> No statistical outliers detected by the IQR method because the bounds (-0.13 to 1.39) encompass the full data range. However, the <strong>bimodal shape</strong> of the histogram reveals two distinct employee groups:
             <ol>
-                <li><strong>Highly dissatisfied</strong> (satisfaction ≈ 0.09–0.20) — likely candidates for attrition</li>
-                <li><strong>Satisfied</strong> (satisfaction ≈ 0.70–0.95) — likely retained employees</li>
+                <li><strong>Highly dissatisfied</strong> (satisfaction â‰ˆ 0.09â€“0.20) â€” likely candidates for attrition</li>
+                <li><strong>Satisfied</strong> (satisfaction â‰ˆ 0.70â€“0.95) â€” likely retained employees</li>
             </ol>
         </div>
 
         <div class="chart-ref"><strong>See:</strong> <code>outputs/partC1_univariate_satisfaction.png</code> (combined) or individual: <code>C1a_histogram_satisfaction.png</code>, <code>C1b_boxplot_satisfaction.png</code>, <code>C1c_qqplot_satisfaction.png</code></div>
 
-        <h3>C2. Multivariate Analysis — Pair Plot</h3>
+        <h3>C2. Multivariate Analysis â€” Pair Plot</h3>
         <p>A Seaborn pairplot was generated for all numeric columns, color-coded by the <code>left</code> (attrition) variable.</p>
 
         <h4>Key Separations Identified</h4>
@@ -543,9 +543,9 @@
 
         <h4>Pair 2: <code>average_montly_hours</code> vs <code>satisfaction_level</code></h4>
         <ul>
-            <li><strong>Departed employees</strong> cluster at <strong>HIGH hours</strong> (250–300+) + <strong>LOW satisfaction</strong> (&lt; 0.4)</li>
-            <li><strong>Retained employees</strong> concentrate at <strong>MODERATE hours</strong> (150–220) + <strong>MODERATE-HIGH satisfaction</strong> (&gt; 0.5)</li>
-            <li><strong>Interpretation:</strong> Overwork is strongly associated with dissatisfaction and attrition — a classic burnout pattern</li>
+            <li><strong>Departed employees</strong> cluster at <strong>HIGH hours</strong> (250â€“300+) + <strong>LOW satisfaction</strong> (&lt; 0.4)</li>
+            <li><strong>Retained employees</strong> concentrate at <strong>MODERATE hours</strong> (150â€“220) + <strong>MODERATE-HIGH satisfaction</strong> (&gt; 0.5)</li>
+            <li><strong>Interpretation:</strong> Overwork is strongly associated with dissatisfaction and attrition â€” a classic burnout pattern</li>
         </ul>
 
         <div class="chart-ref"><strong>See:</strong> <code>outputs/partC2_pairplot.png</code></div>
@@ -565,17 +565,17 @@
                 <tr><td>p-value</td><td>0.00e+00</td></tr>
                 <tr><td>Strength</td><td><span class="badge badge-low">Weak</span></td></tr>
                 <tr><td>Direction</td><td>Positive</td></tr>
-                <tr><td>R² (Variance Explained)</td><td>12.18%</td></tr>
+                <tr><td>RÂ² (Variance Explained)</td><td>12.18%</td></tr>
             </tbody>
         </table>
 
         <div class="highlight">
-            <strong>Interpretation:</strong> The correlation coefficient of <strong>r = 0.3491</strong> indicates a <strong>weak positive relationship</strong> between the number of projects an employee handles and their evaluation score. R² = 12.18% of the variance in evaluation scores is explained by the number of projects.
+            <strong>Interpretation:</strong> The correlation coefficient of <strong>r = 0.3491</strong> indicates a <strong>weak positive relationship</strong> between the number of projects an employee handles and their evaluation score. RÂ² = 12.18% of the variance in evaluation scores is explained by the number of projects.
         </div>
 
         <div class="chart-ref"><strong>See:</strong> <code>outputs/partC3_correlation_scatter.png</code></div>
 
-        <h2 id="part-d">Part D — Analytics Dashboard [5 Marks]</h2>
+        <h2 id="part-d">Part D â€” Analytics Dashboard [5 Marks]</h2>
 
         <h3>D1. Dashboard Overview</h3>
         <p>A comprehensive 4-panel dashboard was built using Matplotlib and Seaborn as an alternative to Tableau/Power BI.</p>
@@ -601,33 +601,33 @@
                     <td>Low</td>
                     <td>0.601</td>
                     <td>0.255</td>
-                    <td>Bimodal — peak at ~0.1 and ~0.8</td>
+                    <td>Bimodal â€” peak at ~0.1 and ~0.8</td>
                 </tr>
                 <tr>
                     <td>Medium</td>
                     <td>0.622</td>
                     <td>0.245</td>
-                    <td>Near-normal — centered at ~0.6</td>
+                    <td>Near-normal â€” centered at ~0.6</td>
                 </tr>
                 <tr>
                     <td>High</td>
                     <td>0.637</td>
                     <td>0.227</td>
-                    <td>Right-skewed — concentrated at ~0.7–0.9</td>
+                    <td>Right-skewed â€” concentrated at ~0.7â€“0.9</td>
                 </tr>
             </tbody>
         </table>
 
         <h4>Chart 3: Last Evaluation vs Monthly Hours (Scatter Plot)</h4>
         <ul>
-            <li>A distinct <strong>red cluster</strong> appears at <strong>high hours (250–310)</strong> + <strong>high evaluation (0.7–1.0)</strong> — departed high-performers</li>
+            <li>A distinct <strong>red cluster</strong> appears at <strong>high hours (250â€“310)</strong> + <strong>high evaluation (0.7â€“1.0)</strong> â€” departed high-performers</li>
             <li><strong>Insight:</strong> The company is losing its hardest-working, highest-evaluated employees</li>
         </ul>
 
         <h4>Chart 4: Satisfaction by Department & Attrition Status (Box Plot)</h4>
         <ul>
             <li>Across <strong>all departments</strong>, departed employees have <strong>lower median satisfaction</strong></li>
-            <li>The satisfaction gap is consistent (~0.2–0.3 points) regardless of department</li>
+            <li>The satisfaction gap is consistent (~0.2â€“0.3 points) regardless of department</li>
         </ul>
 
         <div class="chart-ref"><strong>Full Dashboard:</strong> <code>outputs/partD_dashboard.png</code> (combined) or individual: <code>D1_barchart_attrition_by_dept.png</code>, <code>D2_histogram_satisfaction_by_salary.png</code>, <code>D3_scatter_evaluation_vs_hours.png</code>, <code>D4_boxplot_satisfaction_by_dept.png</code></div>
@@ -636,11 +636,11 @@
 
         <h3>Key Findings</h3>
         <ol>
-            <li><strong>Burnout of High Performers:</strong> The most alarming pattern is employees who left had <strong>low satisfaction</strong> (mean ≈ 0.44) but <strong>high evaluation scores</strong> (mean ≈ 0.78) and <strong>worked excessive hours</strong> (mean ≈ 257 hrs/month). These are top performers who are burning out and leaving.</li>
-            <li><strong>Salary is a Key Satisfaction Driver:</strong> Low-salary employees show a bimodal satisfaction distribution — either very unhappy (~0.1) or surprisingly happy (~0.8). Medium and high-salary employees show more consistent, moderate-to-high satisfaction.</li>
-            <li><strong>Workload–Attrition Link:</strong> Employees handling 5+ projects and working 250+ hours/month are significantly more likely to leave, regardless of their evaluation scores.</li>
+            <li><strong>Burnout of High Performers:</strong> The most alarming pattern is employees who left had <strong>low satisfaction</strong> (mean â‰ˆ 0.44) but <strong>high evaluation scores</strong> (mean â‰ˆ 0.78) and <strong>worked excessive hours</strong> (mean â‰ˆ 257 hrs/month). These are top performers who are burning out and leaving.</li>
+            <li><strong>Salary is a Key Satisfaction Driver:</strong> Low-salary employees show a bimodal satisfaction distribution â€” either very unhappy (~0.1) or surprisingly happy (~0.8). Medium and high-salary employees show more consistent, moderate-to-high satisfaction.</li>
+            <li><strong>Workloadâ€“Attrition Link:</strong> Employees handling 5+ projects and working 250+ hours/month are significantly more likely to leave, regardless of their evaluation scores.</li>
             <li><strong>Universal Attrition Pattern:</strong> The satisfaction gap between stayed and left employees is consistent across all 10 departments, suggesting organization-wide issues rather than department-specific problems.</li>
-            <li><strong>Critical Tenure Window:</strong> Most attrition occurs at 3–5 years of tenure, suggesting employees reassess their career growth after the initial adjustment period.</li>
+            <li><strong>Critical Tenure Window:</strong> Most attrition occurs at 3â€“5 years of tenure, suggesting employees reassess their career growth after the initial adjustment period.</li>
             <li><strong>Evaluation System Bias:</strong> The weak correlation (r = 0.3491) between projects and evaluations suggests that employees who take on more work get rated higher, but this may not reflect actual quality.</li>
         </ol>
 
@@ -657,7 +657,7 @@
                 <tbody>
                     <tr>
                         <td><strong>1</strong></td>
-                        <td>Implement workload caps (max 4–5 projects per employee)</td>
+                        <td>Implement workload caps (max 4â€“5 projects per employee)</td>
                         <td>Reduce burnout-driven attrition</td>
                     </tr>
                     <tr>
@@ -672,8 +672,8 @@
                     </tr>
                     <tr>
                         <td><strong>4</strong></td>
-                        <td>Conduct stay interviews at the 2–3 year tenure mark</td>
-                        <td>Proactively address concerns before the 3–5 year attrition window</td>
+                        <td>Conduct stay interviews at the 2â€“3 year tenure mark</td>
+                        <td>Proactively address concerns before the 3â€“5 year attrition window</td>
                     </tr>
                     <tr>
                         <td><strong>5</strong></td>
@@ -714,7 +714,7 @@
 
         <footer>
             <p><em>Report generated automatically using Python. All statistics computed from HR_comma_sep.csv (14,995 records).</em></p>
-            <p><strong>LEVELING2108</strong> | BTech — Electronics & Communication Engineering | IIT Madras</p>
+            <p><strong>LEVELING2108</strong> | BTech â€” Electronics & Communication Engineering | </p>
         </footer>
     </div>
 </body>

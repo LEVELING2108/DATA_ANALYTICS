@@ -1,7 +1,7 @@
 # Assignment 2 — Data Objects, Attribute Types & Statistical Descriptions
 
-**Course:** Data Analytics | **Program:** B.Tech ECE — IIT Madras  
-**Dataset:** HR_comma_sep.csv (14,995 employee records)  
+**Course:** Data Analytics | **Program:** B.Tech ECE
+**Dataset:** HR_comma_sep.csv (14,995 employee records)
 **Tools Used:** Python, Pandas, NumPy, Matplotlib, Seaborn, SciPy  
 **Date:** 05 April 2026  
 **Marks:** [20 Marks]

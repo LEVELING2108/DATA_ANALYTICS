@@ -69,8 +69,8 @@ outliers = df[(df['satisfaction_level'] < lower_bound) | (df['satisfaction_level
 # ============================================================
 md_report = f"""# Assignment 2 — Data Objects, Attribute Types & Statistical Descriptions
 
-**Course:** Data Analytics | **Program:** B.Tech ECE — IIT Madras  
-**Dataset:** HR_comma_sep.csv (14,995 employee records)  
+**Course:** Data Analytics | **Program:** B.Tech ECE
+**Dataset:** HR_comma_sep.csv (14,995 employee records)
 **Tools Used:** Python, Pandas, NumPy, Matplotlib, Seaborn, SciPy  
 **Date:** {datetime.now().strftime('%d %B %Y')}  
 **Marks:** [20 Marks]
@@ -611,7 +611,7 @@ html_report = f"""<!DOCTYPE html>
         <header>
             <h1>Assignment 2 — Data Objects, Attribute Types & Statistical Descriptions</h1>
             <div class="meta">
-                <strong>Course:</strong> Data Analytics | <strong>Program:</strong> B.Tech ECE — IIT Madras<br>
+                <strong>Course:</strong> Data Analytics | <strong>Program:</strong> B.Tech ECE — <br>
                 <strong>Dataset:</strong> HR_comma_sep.csv (14,995 employee records)<br>
                 <strong>Tools:</strong> Python, Pandas, NumPy, Matplotlib, Seaborn, SciPy |
                 <strong>Date:</strong> {datetime.now().strftime('%d %B %Y')}
@@ -1105,7 +1105,7 @@ html_report = f"""<!DOCTYPE html>
 
         <footer>
             <p><em>Report generated automatically using Python. All statistics computed from HR_comma_sep.csv (14,995 records).</em></p>
-            <p><strong>LEVELING2108</strong> | BTech — Electronics & Communication Engineering | IIT Madras</p>
+            <p><strong>LEVELING2108</strong> | BTech — Electronics & Communication Engineering | </p>
         </footer>
     </div>
 </body>
@@ -1118,3 +1118,5 @@ with open(html_path, 'w', encoding='utf-8') as f:
 print(f"✓ HTML report saved to: {html_path}")
 
 print("\n✓ All reports generated successfully!")
+
+
