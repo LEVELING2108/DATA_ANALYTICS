@@ -4,10 +4,10 @@
 ![Pandas](https://img.shields.io/badge/Pandas-2.x-150458?logo=pandas)
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.x-F7931E?logo=scikit-learn)
 ![License](https://img.shields.io/badge/License-MIT-green)
-![Status](https://img.shields.io/badge/Status-In%20Progress-orange)
+![Status](https://img.shields.io/badge/Status-4_of_6_Complete-brightgreen)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS.git)
 
-A comprehensive data analytics project covering exploratory data analysis, statistical modeling, hypothesis testing, and machine learning — implemented across 6 assignments using Python, pandas, matplotlib, seaborn, and scikit-learn.
+A comprehensive data analytics project covering exploratory data analysis, statistical modeling, data pre-processing, hypothesis testing, and machine learning — implemented across 6 assignments using Python, pandas, matplotlib, seaborn, and scikit-learn.
 
 ---
 
@@ -98,10 +98,37 @@ python generate_report.py               # Generate Markdown + HTML reports
 
 ---
 
-### Assignment 4 — Hypothesis Testing
-*(Notebook and scripts in `ASSIGNMENT_4/`)*
+### Assignment 4 — Data Pre-processing Pipeline
+**Datasets:** Sonar.csv (208 instances, 60 features) + HR_comma_sep.csv (14,999 records)
+**Tools:** Google Colab, sklearn, pandas, matplotlib, seaborn
 
-Covers t-tests, z-tests, chi-square tests, ANOVA, and p-value interpretation for real-world datasets.
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS.git)
+
+| Part | Task | Key Deliverables |
+|------|------|-----------------|
+| **A** | Data Cleaning | Missing value check, duplicate removal, IQR outlier detection, winsorization (5th-95th %ile), type validation |
+| **B** | Data Integration & Transformation | Split/merge simulation, min-max normalization, z-score standardization, equal-width discretization (4 bins) |
+| **C** | Dimensionality Reduction (Sonar) | PCA (60→46 components for 90% variance), 2D scatter plot, t-SNE comparison |
+| **D** | Power BI Reporting | Export PCA-reduced CSV, top 5 component loadings table, 100% stacked bar chart (class balance) |
+
+**Key Findings:**
+- PCA reduces 60 sonar features to 46 components explaining 90.8% variance (23% dimensionality reduction)
+- t-SNE provides superior class separation in 2D (KL divergence: 1.39) compared to PCA
+- Winsorization at 5th/95th percentile capped extreme values (bounds: 106–300 hrs/month)
+- Top PC1 loadings: V31 (0.253), V52 (0.227), V54 (0.227), V48 (0.224), V40 (0.217)
+- Class balance (Rock: 53.4%, Mine: 46.6%) maintained after PCA reduction
+
+**Outputs:**
+- **Plots:** `partA_winsorization_histogram.png` (99.9 KB), `partB_boxplots_comparison.png` (166.0 KB), `partB_discretization.png` (78.2 KB), `partC_pca_explained_variance.png` (113.0 KB), `partC_pca_2d_scatter.png` (128.7 KB), `partC_pca_vs_tsne.png` (188.8 KB), `partD_class_balance.png` (47.0 KB)
+- **Data:** `sonar_pca_reduced.csv` (185.0 KB, 208×47 cols), `sonar_pca_loadings.csv` (55.8 KB, 60×47 cols)
+- **Reports:** `assignment4_report.md` (17.1 KB)
+- **Scripts:** `scripts/run_analysis.py` — standalone runner (no Colab needed)
+
+**How to Run:**
+```bash
+cd ASSIGNMENT_4/scripts
+python run_analysis.py          # Generates all plots + CSVs locally
+```
 
 ---
 
@@ -148,8 +175,8 @@ Covers classification algorithms (Logistic Regression, Decision Trees, KNN), tra
 3. **Open a notebook or run a script:**
 
    **Option A — Google Colab (recommended, no setup):**
-   - Click the **"Open in Colab"** badge above for Assignment 2 or Assignment 3
-   - Or open: [Assignment 2 Notebook](https://colab.research.google.com/drive/1szbUIrya42yP-jTuLPcJLhm_jzIP7Vp4?usp=sharing) | [Assignment 3 Notebook](https://colab.research.google.com/drive/1AIDmsXjo35dPCS3AuQZA397vHeVQeJdg?usp=sharing)
+   - Click the **"Open in Colab"** badge above for Assignment 2, 3, or 4
+   - Or open: [Assignment 2 Notebook](https://colab.research.google.com/drive/1szbUIrya42yP-jTuLPcJLhm_jzIP7Vp4?usp=sharing) | [Assignment 3 Notebook](https://colab.research.google.com/drive/1AIDmsXjo35dPCS3AuQZA397vHeVQeJdg?usp=sharing) | [Assignment 4 Notebook](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS.git)
    - Run all cells in order — dataset downloads automatically from Google Drive
 
    **Option B — Local Jupyter Notebook:**
@@ -162,6 +189,9 @@ Covers classification algorithms (Logistic Regression, Decision Trees, KNN), tra
 
    # Assignment 3
    jupyter notebook ASSIGNMENT_3/notebooks/similarity_dissimilarity_assignment.ipynb
+
+   # Assignment 4
+   jupyter notebook ASSIGNMENT_4/notebooks/Assignment4_Data_Preprocessing.ipynb
    ```
 
    **Option C — Run Python scripts locally:**
@@ -170,6 +200,9 @@ Covers classification algorithms (Logistic Regression, Decision Trees, KNN), tra
    python assignment2_analysis.py          # Run full analysis
    python generate_individual_plots.py     # Generate individual plot images
    python generate_report.py               # Generate Markdown + HTML reports
+
+   cd ASSIGNMENT_4/scripts
+   python run_analysis.py                  # Generate all plots + CSVs for Assignment 4
    ```
 
 4. **Run all cells** to reproduce analysis, visualizations, and outputs.
@@ -193,6 +226,12 @@ Covers classification algorithms (Logistic Regression, Decision Trees, KNN), tra
 - **Records:** Wine (178), Nutrient (27)
 - **Attributes (Wine):** Alcohol, Malic, Ash, Alcalinity, Magnesium, Phenols, Flavanoids, Nonflavanoid, Proanthocyanins, Intensity, Hue, OD280, Proline
 - **Attributes (Nutrient):** Food_Item, energy, protein, fat, calcium, iron
+
+### Assignment 4 — Sonar & HR Datasets
+- **Files:** `Sonar.csv` (auto-downloaded from UCI), `HR_comma_sep.csv` (Google Drive)
+- **Records:** Sonar (208), HR (14,995)
+- **Attributes (Sonar):** V1-V60 (continuous frequency-band features), Class (R=Rock, M=Mine)
+- **Attributes (HR):** satisfaction_level, last_evaluation, number_project, average_montly_hours, time_spend_company, Work_accident, left, promotion_last_5years, Department, salary
 
 ---
 
