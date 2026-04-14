@@ -1,10 +1,12 @@
 # Assignment 4 Report — Data Pre-processing Pipeline
 
-**Student:** LEVELING2108  
-**Course:** Data Analytics — B.Tech ECE  
-**Unit:** Unit V – Data Pre-processing  
-**Marks:** [20 Marks]  
-**Date:** April 2026  
+**Student:** LEVELING2108
+**Course:** Data Analytics — B.Tech ECE
+**Unit:** Unit V – Data Pre-processing
+**Marks:** [20 Marks]
+**Date:** April 2026
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1i9ZhVnz6NUgthtDbTporzmEYuPfgrzWq?usp=sharing)
 
 ---
 
@@ -81,9 +83,11 @@ The pipeline covers data cleaning, integration, transformation, dimensionality r
 - **Upper cap (95th percentile):** 300 hours
 - **Values capped:** ~1,500 rows (10% of dataset)
 
-![Winsorization Histogram](partA_winsorization_histogram.png)
+![Winsorization — Before](partA_winsorization_before.png)
 
-**Finding:** Winsorization capped extreme values at both tails (106–300 hrs/month). The histogram shows flattened tails after capping, reducing standard deviation from 62.1 to 57.8. In real-world HR data, this step typically removes 5-10% of extreme outliers that would otherwise skew statistical analysis.
+![Winsorization — After](partA_winsorization_after.png)
+
+**Finding:** Winsorization capped extreme values at both tails (106–300 hrs/month). The "Before" histogram shows the full distribution with red lines at the 5th/95th percentile caps. The "After" histogram shows flattened tails where values were clipped, reducing standard deviation from 62.1 to 57.8.
 
 ---
 
@@ -160,13 +164,13 @@ The pipeline covers data cleaning, integration, transformation, dimensionality r
 
 **Formula:** `X_standardized = (X - μ) / σ`
 
-![Box Plots Comparison](partB_boxplots_comparison.png)
+![Box Plot — Original](partB_boxplot_original.png)
 
-**Finding:** Z-score standardization centered each feature at ~0 with unit variance. The box plots show all three features on comparable scales, with outlier points beyond ±2 clearly visible.
+![Box Plot — Min-Max Normalized](partB_boxplot_minmax.png)
 
-**Comparison:**
-- **Min-Max:** Bounds to [0, 1]; preserves distribution shape; sensitive to outliers
-- **Z-Score:** Centers at 0 with σ=1; robust to unseen values; ideal for PCA and parametric tests
+![Box Plot — Z-Score Standardized](partB_boxplot_zscore.png)
+
+**Finding:** The three box plots show the transformation progression. Original data has features on different scales. Min-Max normalization compresses all to [0,1]. Z-score standardization centers each at ~0 with unit variance, making outlier points beyond ±2 clearly visible.
 
 ---
 
@@ -181,9 +185,11 @@ The pipeline covers data cleaning, integration, transformation, dimensionality r
 | **Good** | [0.68, 0.84) | 4,148 | 27.7% |
 | **Excellent** | [0.84, 1.00] | 1,784 | 11.9% |
 
-![Discretization](partB_discretization.png)
+![Discretization — Histogram](partB_discretization_histogram.png)
 
-**Finding:** The discretization shows the majority of employees (63.4%) fall into the "Unsatisfactory" and "Average" bins, with only 11.9% reaching "Excellent". This reflects the beta distribution parameters used (α=3, β=2), which skews toward mid-high evaluation scores. Equal-width binning produces uneven group sizes; equal-frequency binning would balance counts across bins.
+![Discretization — Bins](partB_discretization_bins.png)
+
+**Finding:** The histogram shows the continuous distribution of `last_evaluation`. The bar chart shows the equal-width discretization into 4 bins: Unsatisfactory (5,207), Average (3,860), Good (4,148), Excellent (1,784). The majority (63.4%) fall in "Unsatisfactory" + "Average" bins, with only 11.9% reaching "Excellent".
 
 ---
 
@@ -231,9 +237,11 @@ The pipeline covers data cleaning, integration, transformation, dimensionality r
 
 **Variance distribution:** Variance is spread across many components (no single PC dominates), indicating the sonar data has complex multi-dimensional structure rather than a few dominant factors.
 
-![PCA Explained Variance](partC_pca_explained_variance.png)
+![PCA — Variance Bar Chart](partC_pca_variance_bar.png)
 
-**Finding:** The scree plot shows a gradual decline with no sharp elbow, confirming that variance is distributed across many components. 46 components are needed for 90% retention — higher than typical textbook examples, reflecting the synthetic dataset's uniform random structure. With real sonar data, this typically drops to 10-15 components.
+![PCA — Cumulative Variance](partC_pca_variance_cumulative.png)
+
+**Finding:** The bar chart shows variance distributed across the first 20 components (no single PC dominates). The cumulative plot confirms 46 components needed for 90.81% variance (green line at component 46, red threshold at 90%).
 
 ---
 
@@ -274,7 +282,9 @@ The pipeline covers data cleaning, integration, transformation, dimensionality r
 
 ### Task 38: PCA vs t-SNE Comparison
 
-![PCA vs t-SNE](partC_pca_vs_tsne.png)
+![PCA 2D Embedding](partC_pca_comparison.png)
+
+![t-SNE 2D Embedding](partC_tsne_scatter.png)
 
 #### Detailed Comparison
 
@@ -378,14 +388,20 @@ Exported PCA-reduced data (`sonar_pca_reduced.csv`, 185 KB) and loadings (`sonar
 
 | File | Size | Description |
 |------|------|-------------|
-| `partA_winsorization_histogram.png` | 99.9 KB | Before/after winsorization histograms (Task 28) |
-| `partB_boxplots_comparison.png` | 166.0 KB | Original vs Min-Max vs Z-Score box plots (Task 32) |
-| `partB_discretization.png` | 78.2 KB | Equal-width discretization histogram + bar chart (Task 33) |
-| `partC_pca_explained_variance.png` | 113.0 KB | PCA variance bar chart + cumulative curve (Task 35) |
-| `partC_pca_2d_scatter.png` | 128.7 KB | 2D PCA scatter plot colored by class (Task 37) |
-| `partC_pca_vs_tsne.png` | 188.8 KB | Side-by-side PCA vs t-SNE comparison (Task 38) |
-| `partD_class_balance.png` | 47.0 KB | 100% stacked bar chart (class balance) (Part D) |
-| `sonar_pca_reduced.csv` | 185.0 KB | PCA-reduced dataset: 208 rows × 48 cols (46 PCs + Class + Class_Label) |
+| `partA_winsorization_before.png` | 58.1 KB | Histogram before winsorization (Task 28) |
+| `partA_winsorization_after.png` | 60.7 KB | Histogram after winsorization (Task 28) |
+| `partB_boxplot_original.png` | 52.6 KB | Box plot — original data (Task 32) |
+| `partB_boxplot_minmax.png` | 64.4 KB | Box plot — min-max normalized (Task 32) |
+| `partB_boxplot_zscore.png` | 58.9 KB | Box plot — z-score standardized (Task 32) |
+| `partB_discretization_histogram.png` | 37.8 KB | Histogram of last_evaluation (Task 33) |
+| `partB_discretization_bins.png` | 53.8 KB | Bar chart of discretized bins (Task 33) |
+| `partC_pca_variance_bar.png` | 77.1 KB | PCA explained variance bar chart (Task 35) |
+| `partC_pca_variance_cumulative.png` | 64.6 KB | PCA cumulative variance curve (Task 35) |
+| `partC_pca_2d_scatter.png` | 116.8 KB | 2D PCA scatter plot by class (Task 37) |
+| `partC_pca_comparison.png` | 99.8 KB | PCA 2D embedding (for t-SNE comparison, Task 38) |
+| `partC_tsne_scatter.png` | 111.9 KB | t-SNE 2D embedding (Task 38) |
+| `partD_class_balance.png` | 45.4 KB | 100% stacked bar chart (class balance) |
+| `sonar_pca_reduced.csv` | 185.0 KB | PCA-reduced dataset: 208 rows × 48 cols |
 | `sonar_pca_loadings.csv` | 55.8 KB | Feature loadings: 60 features × 46 PCs |
 | `assignment4_report.md` | — | This report |
 
@@ -393,16 +409,16 @@ Exported PCA-reduced data (`sonar_pca_reduced.csv`, 185 KB) and loadings (`sonar
 
 ## Deliverables Checklist
 
-| Deliverable | Status | File |
-|-------------|--------|------|
-| Before/after histograms for outlier removal | ✅ | `partA_winsorization_histogram.png` |
-| Type-fix documentation | ✅ | Task 29 table above |
+| Deliverable | Status | Files |
+|-------------|--------|-------|
+| Before/after histograms for outlier removal | ✅ | `partA_winsorization_before.png`, `partA_winsorization_after.png` |
+| Type-fix documentation | ✅ | Task 29 table |
 | Normalization/standardization statistics | ✅ | Tasks 31-32 tables |
-| Side-by-side box plots | ✅ | `partB_boxplots_comparison.png` |
-| Equal-width discretization value counts | ✅ | Task 33 table + `partB_discretization.png` |
-| PCA explained variance chart | ✅ | `partC_pca_explained_variance.png` |
+| Side-by-side box plots | ✅ | `partB_boxplot_original.png`, `partB_boxplot_minmax.png`, `partB_boxplot_zscore.png` |
+| Equal-width discretization value counts | ✅ | Task 33 table + `partB_discretization_histogram.png`, `partB_discretization_bins.png` |
+| PCA explained variance chart | ✅ | `partC_pca_variance_bar.png`, `partC_pca_variance_cumulative.png` |
 | 2D PCA scatter plot | ✅ | `partC_pca_2d_scatter.png` |
-| t-SNE comparison plot | ✅ | `partC_pca_vs_tsne.png` |
+| t-SNE comparison plot | ✅ | `partC_pca_comparison.png`, `partC_tsne_scatter.png` |
 | Power BI CSV exports | ✅ | `sonar_pca_reduced.csv`, `sonar_pca_loadings.csv` |
 | Class balance chart | ✅ | `partD_class_balance.png` |
 

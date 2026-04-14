@@ -102,7 +102,7 @@ python generate_report.py               # Generate Markdown + HTML reports
 **Datasets:** Sonar.csv (208 instances, 60 features) + HR_comma_sep.csv (14,999 records)
 **Tools:** Google Colab, sklearn, pandas, matplotlib, seaborn
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS.git)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1i9ZhVnz6NUgthtDbTporzmEYuPfgrzWq?usp=sharing)
 
 | Part | Task | Key Deliverables |
 |------|------|-----------------|
@@ -119,10 +119,10 @@ python generate_report.py               # Generate Markdown + HTML reports
 - Class balance (Rock: 53.4%, Mine: 46.6%) maintained after PCA reduction
 
 **Outputs:**
-- **Plots:** `partA_winsorization_histogram.png` (99.9 KB), `partB_boxplots_comparison.png` (166.0 KB), `partB_discretization.png` (78.2 KB), `partC_pca_explained_variance.png` (113.0 KB), `partC_pca_2d_scatter.png` (128.7 KB), `partC_pca_vs_tsne.png` (188.8 KB), `partD_class_balance.png` (47.0 KB)
-- **Data:** `sonar_pca_reduced.csv` (185.0 KB, 208×47 cols), `sonar_pca_loadings.csv` (55.8 KB, 60×47 cols)
-- **Reports:** `assignment4_report.md` (17.1 KB)
-- **Scripts:** `scripts/run_analysis.py` — standalone runner (no Colab needed)
+- **Plots (13 individual files):** `partA_winsorization_before.png` (58.1 KB), `partA_winsorization_after.png` (60.7 KB), `partB_boxplot_original.png` (52.6 KB), `partB_boxplot_minmax.png` (64.4 KB), `partB_boxplot_zscore.png` (58.9 KB), `partB_discretization_histogram.png` (37.8 KB), `partB_discretization_bins.png` (53.8 KB), `partC_pca_variance_bar.png` (77.1 KB), `partC_pca_variance_cumulative.png` (64.6 KB), `partC_pca_2d_scatter.png` (116.8 KB), `partC_pca_comparison.png` (99.8 KB), `partC_tsne_scatter.png` (111.9 KB), `partD_class_balance.png` (45.4 KB)
+- **Data:** `sonar_pca_reduced.csv` (185.0 KB, 208×48 cols), `sonar_pca_loadings.csv` (55.8 KB, 60×47 cols)
+- **Reports:** `assignment4_report.md` (18.2 KB)
+- **Scripts:** `scripts/run_analysis.py` — standalone runner (generates all 13 individual plots + 2 CSVs)
 
 **How to Run:**
 ```bash
@@ -176,7 +176,7 @@ Covers classification algorithms (Logistic Regression, Decision Trees, KNN), tra
 
    **Option A — Google Colab (recommended, no setup):**
    - Click the **"Open in Colab"** badge above for Assignment 2, 3, or 4
-   - Or open: [Assignment 2 Notebook](https://colab.research.google.com/drive/1szbUIrya42yP-jTuLPcJLhm_jzIP7Vp4?usp=sharing) | [Assignment 3 Notebook](https://colab.research.google.com/drive/1AIDmsXjo35dPCS3AuQZA397vHeVQeJdg?usp=sharing) | [Assignment 4 Notebook](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS.git)
+   - Or open: [Assignment 2 Notebook](https://colab.research.google.com/drive/1szbUIrya42yP-jTuLPcJLhm_jzIP7Vp4?usp=sharing) | [Assignment 3 Notebook](https://colab.research.google.com/drive/1AIDmsXjo35dPCS3AuQZA397vHeVQeJdg?usp=sharing) | [Assignment 4 Notebook](https://colab.research.google.com/drive/1i9ZhVnz6NUgthtDbTporzmEYuPfgrzWq?usp=sharing)
    - Run all cells in order — dataset downloads automatically from Google Drive
 
    **Option B — Local Jupyter Notebook:**
