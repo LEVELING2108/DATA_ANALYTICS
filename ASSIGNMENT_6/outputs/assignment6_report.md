@@ -3,7 +3,7 @@
 **Dataset:** `insurance.csv` and `HR_comma_sep.csv` (Loaded from Google Drive)  
 **Tools Used:** Python (Pandas, Scikit-Learn, Seaborn), Google Colab, Tableau Public (Required as 2nd Tool), GitHub/Cloud.
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ExampleLink)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS/blob/main/ASSIGNMENT_6/notebooks/Assignment6_Colab.ipynb)
 
 ---
 
@@ -146,6 +146,6 @@ A unified "Corporate Wellness" strategy that addresses both mental well-being (t
 ## Step 5 – Cloud Dashboard & External Links [1 Mark]
 *Note: Per the integrative requirements of Unit VI, Step 5 requires at least two tools (Colab + Tableau/Power BI) and a cloud-hosted link (GitHub/Drive).*
 
-- **Google Colab Notebook:** [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ExampleLink)
+- **Google Colab Notebook:** [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS/blob/main/ASSIGNMENT_6/notebooks/Assignment6_Colab.ipynb)
 - **Tableau Public Dashboard:** [View Interactive Dashboard](https://public.tableau.com/views/Assignment6Dashboard/Final)
-- **GitHub Repository:** [Access Project Source](https://github.com/user/data-analytics-assignment6)
+- **GitHub Repository:** [Access Project Source](https://github.com/LEVELING2108/DATA_ANALYTICS)

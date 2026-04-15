@@ -4,8 +4,8 @@
 ![Pandas](https://img.shields.io/badge/Pandas-2.x-150458?logo=pandas)
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.x-F7931E?logo=scikit-learn)
 ![License](https://img.shields.io/badge/License-MIT-green)
-![Status](https://img.shields.io/badge/Status-4_of_6_Complete-brightgreen)
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS.git)
+![Status](https://img.shields.io/badge/Status-6_of_6_Complete-brightgreen)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS)
 
 A comprehensive data analytics project covering exploratory data analysis, statistical modeling, data pre-processing, hypothesis testing, and machine learning — implemented across 6 assignments using Python, pandas, matplotlib, seaborn, and scikit-learn.
 
@@ -132,17 +132,46 @@ python run_analysis.py          # Generates all plots + CSVs locally
 
 ---
 
-### Assignment 5 — Regression & Model Building
+### Assignment 5 — Exploratory Data Analysis & Pattern Mining
+**Dataset:** Satellite dataset (6,435 records)
+**Tools:** Python, Pandas, K-Means, Decision Tree
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Qvlruii_o9K_WHOYnZGZ51hNH0sIdF_8?usp=sharing)
+
 *(Notebook and scripts in `ASSIGNMENT_5/`)*
 
-Covers simple & multiple linear regression, model evaluation (R², RMSE, MAE), residual analysis, and assumptions validation.
+| Part | Task | Key Deliverables |
+|------|------|-----------------|
+| **A** | Initial EDA | Data loading, class distribution (pie/bar charts), missing value check |
+| **B** | Clustering | K-Means with Elbow method (k=2-10), silhouette score (k=6: 0.352), cross-tabulation |
+| **C** | Classification | Decision Tree (Acc: 83.9%), confusion matrix, outlier detection (Isolation Forest) |
+| **D** | Visualization | Dashboard insights (spectral separability), average band intensity heatmaps |
+
+**Key Findings:** K-Means clustering identifies 3 major spectral groups, while Decision Tree achieves 83.9% accuracy in classifying land-use types.
+
+**Outputs:** `partA_class_distribution.png`, `partB_elbow_method.png`, `partB_kmeans_scatter.png`, `partC_confusion_matrix.png`, `partC_outliers_scatter.png`, `assignment5_report.md`
 
 ---
 
-### Assignment 6 — Machine Learning Foundations
+### Assignment 6 — Integrative Mini-Project: End-to-End Analytics Pipeline
+**Datasets:** Insurance & HR Employee Records
+**Tools:** Python, Google Colab, Tableau Public, GitHub
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS/blob/main/ASSIGNMENT_6/notebooks/Assignment6_Colab.ipynb)
+
 *(Notebook and scripts in `ASSIGNMENT_6/`)*
 
-Covers classification algorithms (Logistic Regression, Decision Trees, KNN), train-test split, confusion matrix, ROC curves, and cross-validation.
+| Step | Task | Key Deliverables |
+|------|------|-----------------|
+| **1** | Problem Formulation | Domain context for Healthcare/HR and analytical questions |
+| **2** | Data Pre-processing | Cleaning, encoding, and attribute classification for both datasets |
+| **3** | EDA & Visualization | Correlation heatmaps, histograms, box plots, and similarity measures |
+| **4** | Model Building | HR attrition classification (Decision Tree, Macro F1: 0.96) |
+| **5** | Deployment | GitHub repository, Tableau dashboard, and Cloud deployment |
+
+**Key Findings:** Smoking is the primary driver of insurance costs (r=0.79), and employee satisfaction is the strongest predictor of attrition.
+
+**Outputs:** `cleaned_hr.csv`, `cleaned_insurance.csv`, `plot1_hist_charges.png`, `plot2_box_satisfaction.png`, `plot3_heatmap_insurance.png`, `assignment6_report.md`, `model_narrative.txt`
 
 ---
 
@@ -175,8 +204,8 @@ Covers classification algorithms (Logistic Regression, Decision Trees, KNN), tra
 3. **Open a notebook or run a script:**
 
    **Option A — Google Colab (recommended, no setup):**
-   - Click the **"Open in Colab"** badge above for Assignment 2, 3, or 4
-   - Or open: [Assignment 2 Notebook](https://colab.research.google.com/drive/1szbUIrya42yP-jTuLPcJLhm_jzIP7Vp4?usp=sharing) | [Assignment 3 Notebook](https://colab.research.google.com/drive/1AIDmsXjo35dPCS3AuQZA397vHeVQeJdg?usp=sharing) | [Assignment 4 Notebook](https://colab.research.google.com/drive/1i9ZhVnz6NUgthtDbTporzmEYuPfgrzWq?usp=sharing)
+   - Click the **"Open in Colab"** badge above for Assignment 2, 3, 4, or 5
+   - Or open: [Assignment 2](https://colab.research.google.com/drive/1szbUIrya42yP-jTuLPcJLhm_jzIP7Vp4?usp=sharing) | [Assignment 3](https://colab.research.google.com/drive/1AIDmsXjo35dPCS3AuQZA397vHeVQeJdg?usp=sharing) | [Assignment 4](https://colab.research.google.com/drive/1i9ZhVnz6NUgthtDbTporzmEYuPfgrzWq?usp=sharing) | [Assignment 5](https://colab.research.google.com/drive/1Qvlruii_o9K_WHOYnZGZ51hNH0sIdF_8?usp=sharing)
    - Run all cells in order — dataset downloads automatically from Google Drive
 
    **Option B — Local Jupyter Notebook:**
@@ -192,17 +221,27 @@ Covers classification algorithms (Logistic Regression, Decision Trees, KNN), tra
 
    # Assignment 4
    jupyter notebook ASSIGNMENT_4/notebooks/Assignment4_Data_Preprocessing.ipynb
+
+   # Assignment 5
+   jupyter notebook ASSIGNMENT_5/notebooks/Assignment5_Colab.ipynb
+
+   # Assignment 6
+   jupyter notebook ASSIGNMENT_6/notebooks/Assignment6_Colab.ipynb
    ```
 
    **Option C — Run Python scripts locally:**
    ```bash
    cd ASSIGNMENT_2/notebooks
    python assignment2_analysis.py          # Run full analysis
-   python generate_individual_plots.py     # Generate individual plot images
-   python generate_report.py               # Generate Markdown + HTML reports
 
    cd ASSIGNMENT_4/scripts
    python run_analysis.py                  # Generate all plots + CSVs for Assignment 4
+
+   cd ASSIGNMENT_5/notebooks
+   python assignment5_analysis.py          # Run full analysis for Assignment 5
+
+   cd ASSIGNMENT_6/notebooks
+   python assignment6_analysis.py          # Run full analysis for Assignment 6
    ```
 
 4. **Run all cells** to reproduce analysis, visualizations, and outputs.
@@ -212,12 +251,13 @@ Covers classification algorithms (Logistic Regression, Decision Trees, KNN), tra
 ## Dataset Sources
 
 ### Assignment 1 — Insurance
-- **Download URL:** `https://drive.google.com/uc?export=download&id=1oyN6CXzbJq42dL5Jqkn1cP83Hu93CD6q`
+- **Download URL:** `https://drive.google.com/file/d/1oyN6CXzbJq42dL5Jqkn1cP83Hu93CD6q/view?usp=sharing`
 - **Records:** 1,338
 - **Attributes:** age, sex, bmi, children, smoker, region, charges
 
 ### Assignment 2 — HR Employee Records
 - **File:** `ASSIGNMENT_2/data/HR_comma_sep.csv`
+- **Download URL:** `https://drive.google.com/file/d/1bviXba_EF5Sqv_RzUUtquON5KUrdrjjj/view?usp=sharing`
 - **Records:** 14,995
 - **Attributes:** satisfaction_level, last_evaluation, number_project, average_montly_hours, time_spend_company, Work_accident, left, promotion_last_5years, Department, salary
 
@@ -232,6 +272,14 @@ Covers classification algorithms (Logistic Regression, Decision Trees, KNN), tra
 - **Records:** Sonar (208), HR (14,995)
 - **Attributes (Sonar):** V1-V60 (continuous frequency-band features), Class (R=Rock, M=Mine)
 - **Attributes (HR):** satisfaction_level, last_evaluation, number_project, average_montly_hours, time_spend_company, Work_accident, left, promotion_last_5years, Department, salary
+
+### Assignment 5 — Satellite Dataset
+- **Download URL:** `https://drive.google.com/uc?export=download&id=1ykwDH-9nGWR-8pIilhiD7PcIhvIDy3OF`
+- **Records:** 6,435
+- **Attributes:** x.1-x.36 (spectral bands), classes (land-use)
+
+### Assignment 6 — Integrative (Insurance + HR)
+- **Files:** Combined analysis of datasets from Assignment 1 and Assignment 2.
 
 ---
 

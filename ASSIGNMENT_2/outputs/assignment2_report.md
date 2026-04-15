@@ -1,7 +1,7 @@
 # Assignment 2 — Data Objects, Attribute Types & Statistical Descriptions
 
 **Course:** Data Analytics | **Program:** B.Tech ECE
-**Dataset:** [HR_comma_sep.csv](https://drive.google.com/uc?export=download&id=1Xl8h7e1_fH0zJ6i7k2-9p3N4m5lKjZ_O) (14,995 employee records loaded from Google Drive)
+**Dataset:** [HR_comma_sep.csv](https://drive.google.com/file/d/1bviXba_EF5Sqv_RzUUtquON5KUrdrjjj/view?usp=sharing) (14,995 employee records loaded from Google Drive)
 **Tools Used:** Python, Pandas, NumPy, Matplotlib, Seaborn, SciPy  
 **Date:** 05 April 2026  
 **Marks:** [20 Marks]
