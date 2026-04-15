@@ -26,12 +26,30 @@ def step_1_problem_formulation():
 def step_2_preprocessing():
     print("--- Step 2: Data Understanding & Pre-processing ---")
     
-    # Load datasets from Google Drive
-    url_insurance = "https://drive.google.com/uc?export=download&id=1oyN6CXzbJq42dL5Jqkn1cP83Hu93CD6q"
-    url_hr = "https://drive.google.com/uc?export=download&id=1Xl8h7e1_fH0zJ6i7k2-9p3N4m5lKjZ_O"
+    # Try loading from local files first for reliability in this environment
+    local_insurance = "ASSIGNMENT_6/data/insurance.csv"
+    local_hr = "ASSIGNMENT_6/data/HR_comma_sep.csv"
     
-    df_insurance = pd.read_csv(url_insurance)
-    df_hr = pd.read_csv(url_hr)
+    try:
+        if os.path.exists(local_insurance):
+            df_insurance = pd.read_csv(local_insurance)
+            print("Loaded insurance data from local file.")
+        else:
+            url_insurance = "https://drive.google.com/uc?export=download&id=1oyN6CXzbJq42dL5Jqkn1cP83Hu93CD6q"
+            df_insurance = pd.read_csv(url_insurance)
+            print("Loaded insurance data from URL.")
+            
+        if os.path.exists(local_hr):
+            df_hr = pd.read_csv(local_hr)
+            print("Loaded HR data from local file.")
+        else:
+            url_hr = "https://drive.google.com/uc?export=download&id=1bviXba_EF5Sqv_RzUUtquON5KUrdrjjj"
+            df_hr = pd.read_csv(url_hr)
+            print("Loaded HR data from URL.")
+    except Exception as e:
+        print(f"Error loading data: {e}")
+        # Fallback to empty dataframes or raise error
+        raise e
     
     # Data Quality Report storage
     quality_report = []

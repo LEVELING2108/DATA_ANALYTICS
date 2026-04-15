@@ -15,7 +15,7 @@ import os
 # ============================================================
 # SETUP
 # ============================================================
-DATA_URL = "https://drive.google.com/uc?export=download&id=1Xl8h7e1_fH0zJ6i7k2-9p3N4m5lKjZ_O"
+DATA_URL = \"https://drive.google.com/file/d/1bviXba_EF5Sqv_RzUUtquON5KUrdrjjj/view?usp=sharing\"
 OUTPUT_DIR = os.path.join('..', 'outputs')
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 

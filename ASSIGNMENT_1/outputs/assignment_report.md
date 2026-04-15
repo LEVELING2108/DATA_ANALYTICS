@@ -37,7 +37,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load dataset from Google Drive
-url = "https://drive.google.com/uc?export=download&id=1oyN6CXzbJq42dL5Jqkn1cP83Hu93CD6q"
+url = "https://drive.google.com/file/d/1oyN6CXzbJq42dL5Jqkn1cP83Hu93CD6q/view?usp=sharing"
 df = pd.read_csv(url)
 
 # Display first 10 rows

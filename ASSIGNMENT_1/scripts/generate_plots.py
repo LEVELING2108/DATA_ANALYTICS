@@ -15,7 +15,7 @@ OUTPUT_DIR = os.path.join(os.path.dirname(SCRIPT_DIR), 'outputs')
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Load and clean data from Google Drive
-url = "https://drive.google.com/uc?export=download&id=1oyN6CXzbJq42dL5Jqkn1cP83Hu93CD6q"
+url = "https://drive.google.com/file/d/1oyN6CXzbJq42dL5Jqkn1cP83Hu93CD6q/view?usp=sharing"
 df = pd.read_csv(url)
 df = df.drop_duplicates()
 df['smoker_encoded'] = df['smoker'].map({'yes': 1, 'no': 0})

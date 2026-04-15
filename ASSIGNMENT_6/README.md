@@ -1,23 +1,30 @@
-# Assignment 6 — Machine Learning Foundations
+# Assignment 6 — Integrative Mini-Project: End-to-End Analytics Pipeline
 
 ## Overview
-Covers classification algorithms (Logistic Regression, Decision Trees, KNN), train-test split, confusion matrix, ROC curves, and cross-validation.
+This final assignment integrates analysis from multiple domains (Healthcare/Insurance and HR). It covers data pre-processing, EDA, model building (classification for attrition), and cloud deployment using Google Colab and Tableau.
 
-## Parts
-| Part | Task | Description |
-|------|------|-------------|
-| **A** | Data Preprocessing | Train-test split, feature scaling, encoding |
-| **B** | Logistic Regression | Binary classification with probability outputs |
-| **C** | Decision Trees | Tree-based classification with pruning |
-| **D** | K-Nearest Neighbors | Distance-based classification with k-tuning |
-| **E** | Model Evaluation | Confusion matrix, ROC-AUC, cross-validation |
+## Step-by-Step Breakdown
+| Step | Task | Key Deliverables |
+|------|------|-----------------|
+| **1** | Problem Formulation | Defining domain context and analytical questions |
+| **2** | Data Pre-processing | Cleaning, encoding, and attribute classification |
+| **3** | EDA & Visualization | Multi-dataset visualizations and correlation analysis |
+| **4** | Model Building | Attrition prediction using Decision Trees |
+| **5** | Deployment | External links (GitHub, Colab, Tableau Public) |
+
+## Colab Link
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEVELING2108/DATA_ANALYTICS/blob/main/ASSIGNMENT_6/notebooks/Assignment6_Colab.ipynb)
 
 ## Files
-- `notebooks/` — Jupyter notebook with full analysis
-- `outputs/` — Generated plots and evaluation metrics
-- `scripts/` — Standalone Python scripts
+- `notebooks/Assignment6_Colab.ipynb` — Full analytics pipeline
+- `notebooks/assignment6_analysis.py` — Python script for local processing
+- `outputs/` — Cleaned data (`cleaned_hr.csv`), plots, and `assignment6_report.md`
 
 ## How to Run
 ```bash
-jupyter notebook ASSIGNMENT_6/notebooks/ml_foundations.ipynb
+# Local analysis script
+python ASSIGNMENT_6/notebooks/assignment6_analysis.py
+
+# Jupyter Notebook
+jupyter notebook ASSIGNMENT_6/notebooks/Assignment6_Colab.ipynb
 ```
