@@ -1,0 +1,1 @@
+Euclidean distance between Insurance Record 0 and 1 (age, bmi, children): 6.0380
