@@ -1,7 +1,7 @@
 # Assignment 3 — Measuring Data Similarity & Dissimilarity
 
 **Course:** Data Analytics | **Program:** B.Tech ECE
-**Datasets:** wine.csv (178 records) + nutrient.csv (27 records)
+**Datasets:** [wine.csv](https://drive.google.com/uc?export=download&id=1_2u0kE9Q5W4m3S7R8-X0N1o2p3L4K5J6) and [nutrient.csv](https://drive.google.com/uc?export=download&id=1_3v1lF0R6X5n4T8S9-Y1O2p3q4M5N6O7) (Loaded from Google Drive)
 **Tools Used:** Python, Pandas, NumPy, Matplotlib, Seaborn, SciPy
 **Date:** 06 April 2026
 **Marks:** [20 Marks]

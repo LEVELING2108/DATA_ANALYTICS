@@ -27,8 +27,9 @@ print('\n' + '='*70)
 print('PART A - Data Matrix vs. Dissimilarity Matrix on Wine Data')
 print('='*70)
 
-# Load wine dataset
-wine_df = pd.read_csv('../data/wine.csv')
+# Load wine dataset from Google Drive
+url_wine = "https://drive.google.com/uc?export=download&id=1_2u0kE9Q5W4m3S7R8-X0N1o2p3L4K5J6"
+wine_df = pd.read_csv(url_wine)
 selected_columns = ['Alcohol', 'Malic', 'Ash', 'Magnesium', 'Phenols', 'Flavanoids']
 wine_subset = wine_df[selected_columns].head(10)
 
@@ -147,8 +148,9 @@ print('\n' + '='*70)
 print('PART C - Proximity for Nominal & Binary Attributes on Nutrient Data')
 print('='*70)
 
-# Load nutrient dataset
-nutrient_df = pd.read_csv('../data/nutrient.csv')
+# Load nutrient dataset from Google Drive
+url_nutrient = "https://drive.google.com/uc?export=download&id=1_3v1lF0R6X5n4T8S9-Y1O2p3q4M5N6O7"
+nutrient_df = pd.read_csv(url_nutrient)
 print(f'\nLoaded nutrient dataset: {nutrient_df.shape}')
 
 # Task 25: Categorize energy and fat into Low/Medium/High

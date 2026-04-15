@@ -15,11 +15,11 @@ import os
 # ============================================================
 # SETUP
 # ============================================================
-DATA_PATH = os.path.join('..', 'data', 'HR_comma_sep.csv')
+DATA_URL = "https://drive.google.com/uc?export=download&id=1Xl8h7e1_fH0zJ6i7k2-9p3N4m5lKjZ_O"
 OUTPUT_DIR = os.path.join('..', 'outputs')
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-df = pd.read_csv(DATA_PATH)
+df = pd.read_csv(DATA_URL)
 
 # Rename columns for easier access
 df.columns = ['satisfaction_level', 'last_evaluation', 'number_project',

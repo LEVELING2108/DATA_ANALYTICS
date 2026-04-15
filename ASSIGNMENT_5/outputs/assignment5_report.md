@@ -10,8 +10,9 @@
 ## Part A – Data Loading & Initial EDA
 
 ### Task 39 — Load Dataset & Report Shape
-The dataset was loaded from `Satellite.csv` using a custom parsing method due to its non-standard semicolon delimiter and triple-quoted values.
+The dataset was loaded from Google Drive (`Satellite.csv`) using a custom parsing method due to its non-standard semicolon delimiter and triple-quoted values.
 
+- **URL:** [Download Satellite.csv](https://drive.google.com/uc?export=download&id=1ykwDH-9nGWR-8pIilhiD7PcIhvIDy3OF)
 - **Shape:** (6435, 37)
 - **Columns:** x.1 to x.36 and 'classes'
 - **Data Types:** 36 Integer (int64) features and 1 Nominal (object) target.

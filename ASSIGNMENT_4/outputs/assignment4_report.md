@@ -13,8 +13,8 @@
 ## Executive Summary
 
 This report documents a comprehensive data pre-processing pipeline applied to two datasets:
-1. **HR_comma_sep.csv** — 14,999 employee records with mixed numeric and categorical features (synthetic, matching real-world distributions)
-2. **Sonar.csv** — 208 instances with 60 continuous frequency-band features (Rock vs. Mine classification)
+1. **HR_comma_sep.csv** — 14,999 employee records with mixed numeric and categorical features (Loaded from Google Drive)
+2. **Sonar.csv** — 208 instances with 60 continuous frequency-band features (Loaded from Google Drive)
 
 The pipeline covers data cleaning, integration, transformation, dimensionality reduction (PCA), and non-linear embedding (t-SNE), culminating in Power BI-ready exports.
 

@@ -1,0 +1,10 @@
+
+### Step 4: Modelling & Insights
+**Algorithm:** Decision Tree Classifier (max_depth=5)
+**Performance:** Accuracy: 97.43%. 
+The model shows strong predictive power for employee attrition. Satisfaction level and average monthly hours emerged as the most critical features.
+
+**Findings Narrative:**
+The analysis of the HR dataset confirms that low satisfaction levels and extreme work hours (either too low or too high) are significant predictors of employee turnover. Specifically, employees with satisfaction levels below 0.11 or above 0.9 (but with high workloads) are at higher risk. 
+In the insurance dataset, the statistical analysis clearly showed that 'smoking' is the most significant factor driving costs, far outweighing age or BMI.
+The integration of these datasets suggests a 'Corporate Wellness' narrative: high insurance costs (due to health risks) and high attrition (due to work stress) are dual challenges that can be addressed through data-driven HR interventions.

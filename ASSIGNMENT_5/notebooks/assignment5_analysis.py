@@ -16,10 +16,14 @@ if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
 # Part A – Data Loading & Initial EDA
-# 39. Load Satellite.csv
-# The file format is triple-quoted semicolon delimited.
-with open("ASSIGNMENT_5/data/Satellite.csv", 'r') as f:
-    lines = f.readlines()
+# 39. Load Satellite.csv from Google Drive
+import io
+import requests
+
+url = "https://drive.google.com/uc?export=download&id=1ykwDH-9nGWR-8pIilhiD7PcIhvIDy3OF"
+response = requests.get(url)
+content = response.content.decode('utf-8')
+lines = content.splitlines()
 
 # Clean quotes and split by semicolon
 data = []
